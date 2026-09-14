@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: OWNER/REPO_NAME
+  repo: SPR4X28/akdeniz-kebap-menu
   branch: main
 
 media_folder: "img"
