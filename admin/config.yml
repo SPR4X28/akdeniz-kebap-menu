@@ -1,0 +1,96 @@
+backend:
+  name: github
+  repo: OWNER/REPO_NAME
+  branch: main
+
+media_folder: "img"
+public_folder: "img"
+
+collections:
+  - name: "menu"
+    label: "Speisekarte"
+    files:
+      - name: "menu"
+        label: "Menü-Daten"
+        file: "content/menu.json"
+        fields:
+          - label: "Marke"
+            name: "brand"
+            widget: object
+            fields:
+              - { label: "Logo", name: "logo", widget: image }
+              - { label: "Tagline", name: "tagline", widget: list, field: { label: "Wort", name: "word", widget: string } }
+              - { label: "Badge-Text (Zeilenumbruch mit \\n)", name: "badge", widget: text }
+
+          - label: "Seite 1"
+            name: "seite1"
+            widget: object
+            fields:
+              - label: "Karten"
+                name: "cards"
+                widget: list
+                summary: "{{title}}"
+                fields:
+                  - { label: "Titel", name: "title", widget: string }
+                  - { label: "Titel-Bild (optional, ersetzt Text)", name: "titleImage", widget: image, required: false }
+                  - { label: "Untertitel", name: "subtitle", widget: string, required: false }
+                  - { label: "Handschrift-Notiz (Zeilenumbruch mit \\n)", name: "note", widget: string, required: false }
+                  - { label: "Produktfoto", name: "image", widget: image }
+                  - { label: "Spaltentitel (z.B. Größe)", name: "head", widget: string, required: false }
+                  - label: "Preiszeilen"
+                    name: "rows"
+                    widget: list
+                    required: false
+                    summary: "{{label}} – {{sub}}"
+                    fields:
+                      - { label: "Größe (M/L/XL)", name: "label", widget: string }
+                      - { label: "Gewicht", name: "sub", widget: string, required: false }
+                      - { label: "Preis Hähnchen", name: "haehnchen", widget: string }
+                      - { label: "Preis Steak", name: "steak", widget: string }
+                      - { label: "Preis Fleisch-Mix", name: "mix", widget: string }
+                  - { label: "Portionshinweis (Box)", name: "portion", widget: string, required: false }
+                  - label: "Preis-Kacheln (nur Box)"
+                    name: "tiles"
+                    widget: list
+                    required: false
+                    summary: "{{label}} – {{price}}"
+                    fields:
+                      - { label: "Bezeichnung", name: "label", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
+                      - { label: "Ist Fleisch-Mix?", name: "mix", widget: boolean, required: false, default: false }
+              - label: "Menü-Balken (Spar-Angebot)"
+                name: "menu"
+                widget: object
+                required: false
+                fields:
+                  - { label: "Titel", name: "title", widget: string }
+                  - { label: "Text", name: "text", widget: text }
+                  - label: "Angebote"
+                    name: "offers"
+                    widget: list
+                    summary: "{{label}} – {{price}}"
+                    fields:
+                      - { label: "Icon", name: "icon", widget: select, options: ["cola", "ayran"] }
+                      - { label: "Label", name: "label", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
+              - { label: "Fußzeile", name: "foot", widget: list, field: { label: "Zeile", name: "line", widget: string } }
+
+          - label: "Seite 2"
+            name: "seite2"
+            widget: object
+            fields:
+              - label: "Karten"
+                name: "cards"
+                widget: list
+                summary: "{{title}}"
+                fields:
+                  - { label: "Titel", name: "title", widget: string }
+                  - { label: "Untertitel", name: "subtitle", widget: string, required: false }
+                  - label: "Positionen"
+                    name: "list"
+                    widget: list
+                    summary: "{{name}} – {{price}}"
+                    fields:
+                      - { label: "Name", name: "name", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
+              - { label: "Fußzeile", name: "foot", widget: list, field: { label: "Zeile", name: "line", widget: string } }

@@ -1,0 +1,123 @@
+{
+  "brand": {
+    "logo": "logo.png",
+    "tagline": ["Frisch", "Hausgemacht", "Einfach lecker"],
+    "badge": "Guter Geschmack\nfür jeden Tag!"
+  },
+  "seite1": {
+    "cards": [
+      {
+        "title": "Döner Pita",
+        "titleImage": "img/doener-title.png",
+        "subtitle": "Knusprig. Saftig. Echt Akdeniz.",
+        "note": "Immer eine\ngute Wahl!",
+        "image": "img/doener-cut.png",
+        "head": "Größe",
+        "rows": [
+          { "label": "M", "sub": "130 g", "haehnchen": "7,90 €", "steak": "10,90 €", "mix": "9,50 €" },
+          { "label": "L", "sub": "180 g", "haehnchen": "9,90 €", "steak": "13,50 €", "mix": "11,90 €" },
+          { "label": "XL", "sub": "230 g", "haehnchen": "11,50 €", "steak": "15,50 €", "mix": "13,50 €" }
+        ]
+      },
+      {
+        "title": "Dürüm",
+        "titleImage": "img/dueruem-title.png",
+        "subtitle": "Gerollt. Voller Geschmack.",
+        "note": "Mehr Geschmack\nzum Mitnehmen!",
+        "image": "img/dueruem-cut.png",
+        "head": "Größe",
+        "rows": [
+          { "label": "M", "sub": "160 g", "haehnchen": "9,50 €", "steak": "12,50 €", "mix": "11,00 €" },
+          { "label": "L", "sub": "200 g", "haehnchen": "11,50 €", "steak": "14,90 €", "mix": "13,50 €" },
+          { "label": "XL", "sub": "250 g", "haehnchen": "13,00 €", "steak": "16,90 €", "mix": "14,90 €" }
+        ]
+      },
+      {
+        "title": "Box",
+        "titleImage": "img/box-title.png",
+        "subtitle": "Praktisch. Zum Löffeln.",
+        "note": "Perfekt für\nzwischendurch!",
+        "image": "img/box-cut.png",
+        "portion": "Nur Größe M · 130 g",
+        "tiles": [
+          { "label": "Hähnchen", "price": "7,90 €" },
+          { "label": "Steak", "price": "10,90 €" },
+          { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true }
+        ]
+      },
+      {
+        "title": "Teller",
+        "titleImage": "img/teller-title.png",
+        "subtitle": "Angerichtet. Richtig satt.",
+        "note": "Genuss auf\ndem Teller!",
+        "image": "img/teller-cut.png",
+        "head": "Größe",
+        "rows": [
+          { "label": "M", "sub": "200 g", "haehnchen": "13,50 €", "steak": "15,90 €", "mix": "14,90 €" },
+          { "label": "L", "sub": "250 g", "haehnchen": "15,50 €", "steak": "18,90 €", "mix": "17,50 €" }
+        ]
+      }
+    ],
+    "menu": {
+      "title": "Mach's zum Menü",
+      "text": "Unser Spar-Tipp für Döner Pita, Dürüm, Lahmacun zum Menü erweitern.",
+      "offers": [
+        { "icon": "cola", "label": "+ Pommes & Softdrink 0,33 l", "price": "+ 5,50 €" },
+        { "icon": "ayran", "label": "+ Pommes & Wasser / Ayran", "price": "+ 4,90 €" }
+      ]
+    },
+    "foot": [
+      "Alle Gerichte frisch zubereitet · Hähnchen, Steak oder Fleisch-Mix zur Wahl",
+      "Alle Preise in Euro, inkl. MwSt."
+    ]
+  },
+  "seite2": {
+    "cards": [
+      {
+        "title": "Vegetarisch",
+        "subtitle": "Ohne Fleisch. Voll im Geschmack.",
+        "list": [
+          { "name": "Veggie Pita", "price": "6,90 €" },
+          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
+          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
+          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
+          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+        ]
+      },
+      {
+        "title": "Türkische Pizza",
+        "subtitle": "Lahmacun",
+        "list": [
+          { "name": "Ohne Beilage", "price": "4,50 €" },
+          { "name": "Mit Salat & Sauce", "price": "7,90 €" },
+          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €" }
+        ]
+      },
+      {
+        "title": "Extras & Beilagen",
+        "subtitle": "Für den vollen Teller.",
+        "list": [
+          { "name": "Pommes", "price": "3,50 €" },
+          { "name": "Reis", "price": "3,50 €" },
+          { "name": "Sauce (Extra)", "price": "2,00 €" },
+          { "name": "Ketchup / Mayo", "price": "0,50 €" },
+          { "name": "Brot", "price": "1,00 €" }
+        ]
+      },
+      {
+        "title": "Getränke",
+        "subtitle": "Eiskalt serviert.",
+        "list": [
+          { "name": "Softdrink 0,33 l", "price": "3,50 €" },
+          { "name": "Wasser 0,5 l", "price": "2,50 €" },
+          { "name": "Ayran 0,25 l", "price": "2,50 €" }
+        ]
+      }
+    ],
+    "foot": [
+      "Informationen zu Zusatzstoffen & Allergenen erhalten Sie gerne an der Theke.",
+      "Alle Preise in Euro, inkl. MwSt."
+    ]
+  }
+}
