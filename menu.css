@@ -176,23 +176,6 @@ body{width:100%;height:100%;overflow:hidden;background:var(--cream)}
   pointer-events:none;
 }
 .card--list .card-media{display:none}
-/* ---------- Produktbild-Inszenierung: fertiges Paint-Brush-Asset hinter dem Foto ----------
-   Wiederverwendbar für jedes freigestellte Produkt: .card-media > img.swash + img.food.
-   .swash ist das bereitgestellte Bild-Asset (img/paint-brush.png), unverändert, ohne Filter/
-   Weichzeichnung – nur skaliert/gedreht/verschoben. object-fit:contain hält sein
-   Seitenverhältnis, damit es nie verzerrt wird. Pro Karte andere Größe/Rotation/Position,
-   damit dieselbe Datei je nach Produktformat anders wirkt (Döner/Box/Teller eher horizontal,
-   Dürüm diagonal). z-index sorgt dafür, dass das Produktfoto immer darüberliegt. */
-.swash{
-  position:absolute;left:50%;bottom:9%;z-index:1;
-  width:92%;height:58%;
-  transform:translateX(-50%) rotate(-4deg);
-  object-fit:contain;object-position:center center;
-}
-/* Formvariation je Produkt: dieselbe Grafik, andere Größe/Drehung/Position */
-.card:nth-child(2) .swash{display:none}
-.card:nth-child(3) .swash{width:104%;height:54%;bottom:6%;transform:translateX(-50%) rotate(-2deg)}
-.card:nth-child(4) .swash{width:114%;height:46%;bottom:10%;transform:translateX(-50%) rotate(0deg)}
 
 .food{
   position:absolute;left:50%;bottom:2%;z-index:2;

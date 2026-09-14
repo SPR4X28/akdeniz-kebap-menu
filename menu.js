@@ -28,11 +28,6 @@
     '<path d="M104 44 L 86 40 M104 44 L 96 24" fill="none" stroke="currentColor" ' +
     'stroke-width="7" stroke-linecap="round"/></svg>';
 
-  /* Paint-Asset (echtes Bild, img/paint-brush.png) statt generierter Grafik.
-     object-fit:contain im CSS erhält das Seitenverhältnis, Größe/Rotation/Position
-     je Produkt kommt aus den .card:nth-child(...)-Regeln im CSS. */
-  var SWASH = '<img class="swash" src="img/paint-brush.png" alt="" aria-hidden="true">';
-
   var DECO = '<span class="deco deco-leaves" aria-hidden="true">' +
     '<svg viewBox="0 0 200 200">' +
     '<g fill="none" stroke="#5c8b3c" stroke-width="4" stroke-linecap="round">' +
@@ -124,7 +119,6 @@
     main.appendChild(note);
 
     var media = el("div", "card-media");
-    media.insertAdjacentHTML("beforeend", SWASH);
     var pi = el("img", "food"); pi.src = c.image; pi.alt = c.title; pi.loading = "eager";
     media.appendChild(pi);
     main.appendChild(media);
