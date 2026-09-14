@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: SPR4X28/akdeniz-kebap-menu
+  name: git-gateway
   branch: main
 
 media_folder: "img"
