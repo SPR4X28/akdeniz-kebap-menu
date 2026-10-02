@@ -7,12 +7,12 @@ public_folder: "img"
 
 collections:
   - name: "menu"
-    label: "Speisekarte"
+    label: "Speisekarte (alt, einzelner Standort)"
     files:
       - name: "menu"
         label: "Menü-Daten"
         file: "content/menu.json"
-        fields:
+        fields: &menuFields
           - label: "Marke"
             name: "brand"
             widget: object
@@ -34,9 +34,9 @@ collections:
                   - { label: "Titel-Bild (optional, ersetzt Text)", name: "titleImage", widget: image, required: false }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
                   - { label: "Handschrift-Notiz (Zeilenumbruch mit \\n)", name: "note", widget: string, required: false }
-                  - { label: "Produktfoto", name: "image", widget: image }
+                  - { label: "Produktfoto (optional, wenn noch keins vorliegt leer lassen)", name: "image", widget: image, required: false }
                   - { label: "Spaltentitel (z.B. Größe)", name: "head", widget: string, required: false }
-                  - label: "Preiszeilen"
+                  - label: "Preiszeilen (Döner/Dürüm/Rollo-Stil)"
                     name: "rows"
                     widget: list
                     required: false
@@ -48,7 +48,7 @@ collections:
                       - { label: "Preis Steak", name: "steak", widget: string }
                       - { label: "Preis Fleisch-Mix", name: "mix", widget: string }
                   - { label: "Portionshinweis (Box)", name: "portion", widget: string, required: false }
-                  - label: "Preis-Kacheln (nur Box)"
+                  - label: "Preis-Kacheln (z.B. Box, Türkische Pizza)"
                     name: "tiles"
                     widget: list
                     required: false
@@ -56,7 +56,16 @@ collections:
                     fields:
                       - { label: "Bezeichnung", name: "label", widget: string }
                       - { label: "Preis", name: "price", widget: string }
-                      - { label: "Ist Fleisch-Mix?", name: "mix", widget: boolean, required: false, default: false }
+                      - { label: "Ist Fleisch-Mix? (alte Box-Kacheln)", name: "mix", widget: boolean, required: false, default: false }
+                      - { label: "Farbe (optional, überschreibt Fleisch-Mix)", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
+                  - label: "Positionen (einfache Liste ohne Größen/Foto, z.B. Lahmacun)"
+                    name: "list"
+                    widget: list
+                    required: false
+                    summary: "{{name}} – {{price}}"
+                    fields:
+                      - { label: "Name", name: "name", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
               - label: "Menü-Balken (Spar-Angebot)"
                 name: "menu"
                 widget: object
@@ -92,4 +101,42 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+              - label: "Zusatzstoffe & Allergene (eigene Kachel unten auf Seite 2)"
+                name: "info"
+                widget: object
+                required: false
+                fields:
+                  - { label: "Titel der Kachel", name: "title", widget: string, required: false }
+                  - label: "Zusatzstoffe (nummeriert)"
+                    name: "additives"
+                    widget: list
+                    required: false
+                    summary: "{{n}} – {{text}}"
+                    fields:
+                      - { label: "Nummer", name: "n", widget: string }
+                      - { label: "Text", name: "text", widget: string }
+                  - label: "Allergene (Buchstaben a–n)"
+                    name: "allergens"
+                    widget: list
+                    required: false
+                    summary: "{{n}} – {{text}}"
+                    fields:
+                      - { label: "Buchstabe", name: "n", widget: string }
+                      - { label: "Text", name: "text", widget: string }
               - { label: "Fußzeile", name: "foot", widget: list, field: { label: "Zeile", name: "line", widget: string } }
+
+  - name: "findorff"
+    label: "Speisekarte – Findorff"
+    files:
+      - name: "findorff"
+        label: "Menü-Daten Findorff"
+        file: "content/findorff.json"
+        fields: *menuFields
+
+  - name: "stuhr"
+    label: "Speisekarte – Marktkauf Stuhr"
+    files:
+      - name: "stuhr"
+        label: "Menü-Daten Stuhr"
+        file: "content/stuhr.json"
+        fields: *menuFields

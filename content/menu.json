@@ -1,8 +1,12 @@
 {
   "brand": {
     "logo": "logo.png",
-    "tagline": ["Frisch", "Hausgemacht", "Einfach lecker"],
-    "badge": "Guter Geschmack\nfür jeden Tag!"
+    "tagline": [
+      "Frisch",
+      "Hausgemacht",
+      "Einfach lecker"
+    ],
+    "badge": "Einzigartiger Geschmack\nGARANTIERT!"
   },
   "seite1": {
     "cards": [
@@ -14,9 +18,27 @@
         "image": "img/doener-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "130 g", "haehnchen": "7,90 €", "steak": "10,90 €", "mix": "9,50 €" },
-          { "label": "L", "sub": "180 g", "haehnchen": "9,90 €", "steak": "13,50 €", "mix": "11,90 €" },
-          { "label": "XL", "sub": "230 g", "haehnchen": "11,50 €", "steak": "15,50 €", "mix": "13,50 €" }
+          {
+            "label": "M",
+            "sub": "130 g",
+            "haehnchen": "7,90 €",
+            "steak": "10,90 €",
+            "mix": "9,50 €"
+          },
+          {
+            "label": "L",
+            "sub": "180 g",
+            "haehnchen": "9,90 €",
+            "steak": "13,50 €",
+            "mix": "11,90 €"
+          },
+          {
+            "label": "XL",
+            "sub": "230 g",
+            "haehnchen": "11,50 €",
+            "steak": "15,50 €",
+            "mix": "13,50 €"
+          }
         ]
       },
       {
@@ -27,9 +49,27 @@
         "image": "img/dueruem-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "160 g", "haehnchen": "9,50 €", "steak": "12,50 €", "mix": "11,00 €" },
-          { "label": "L", "sub": "200 g", "haehnchen": "11,50 €", "steak": "14,90 €", "mix": "13,50 €" },
-          { "label": "XL", "sub": "250 g", "haehnchen": "13,00 €", "steak": "16,90 €", "mix": "14,90 €" }
+          {
+            "label": "M",
+            "sub": "160 g",
+            "haehnchen": "9,50 €",
+            "steak": "12,50 €",
+            "mix": "11,00 €"
+          },
+          {
+            "label": "L",
+            "sub": "200 g",
+            "haehnchen": "11,50 €",
+            "steak": "14,90 €",
+            "mix": "13,50 €"
+          },
+          {
+            "label": "XL",
+            "sub": "250 g",
+            "haehnchen": "13,00 €",
+            "steak": "16,90 €",
+            "mix": "14,90 €"
+          }
         ]
       },
       {
@@ -40,9 +80,19 @@
         "image": "img/box-cut.png",
         "portion": "Nur Größe M · 130 g",
         "tiles": [
-          { "label": "Hähnchen", "price": "7,90 €" },
-          { "label": "Steak", "price": "10,90 €" },
-          { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true }
+          {
+            "label": "Hähnchen",
+            "price": "7,90 €"
+          },
+          {
+            "label": "Steak",
+            "price": "10,90 €"
+          },
+          {
+            "label": "Fleisch-Mix",
+            "price": "9,50 €",
+            "mix": true
+          }
         ]
       },
       {
@@ -53,8 +103,20 @@
         "image": "img/teller-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "200 g", "haehnchen": "13,50 €", "steak": "15,90 €", "mix": "14,90 €" },
-          { "label": "L", "sub": "250 g", "haehnchen": "15,50 €", "steak": "18,90 €", "mix": "17,50 €" }
+          {
+            "label": "M",
+            "sub": "200 g",
+            "haehnchen": "13,50 €",
+            "steak": "15,90 €",
+            "mix": "14,90 €"
+          },
+          {
+            "label": "L",
+            "sub": "250 g",
+            "haehnchen": "15,50 €",
+            "steak": "18,90 €",
+            "mix": "17,50 €"
+          }
         ]
       }
     ],
@@ -62,8 +124,16 @@
       "title": "Mach's zum Menü",
       "text": "Unser Spar-Tipp für Döner Pita, Dürüm, Lahmacun zum Menü erweitern.",
       "offers": [
-        { "icon": "cola", "label": "+ Pommes & Softdrink 0,33 l", "price": "+ 5,50 €" },
-        { "icon": "ayran", "label": "+ Pommes & Wasser / Ayran", "price": "+ 4,90 €" }
+        {
+          "icon": "cola",
+          "label": "+ Pommes & Softdrink 0,33 l",
+          "price": "+ 5,50 €"
+        },
+        {
+          "icon": "ayran",
+          "label": "+ Pommes & Wasser / Ayran",
+          "price": "+ 4,90 €"
+        }
       ]
     },
     "foot": [
@@ -75,48 +145,136 @@
     "cards": [
       {
         "title": "Vegetarisch",
-        "subtitle": "Ohne Fleisch. Voll im Geschmack.",
+        "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
-          { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+          {
+            "name": "Veggie Pita",
+            "price": "6,90 €"
+          },
+          {
+            "name": "Falafel o. Halloumi Pita",
+            "price": "7,90 €"
+          },
+          {
+            "name": "Dürüm Vegetarisch",
+            "price": "7,90 €"
+          },
+          {
+            "name": "Dürüm Falafel o. Halloumi",
+            "price": "8,90 €"
+          },
+          {
+            "name": "Falafel o. Halloumi Box",
+            "price": "8,90 €"
+          },
+          {
+            "name": "Falafel o. Halloumi Teller",
+            "price": "11,90 €"
+          }
         ]
       },
       {
         "title": "Türkische Pizza",
         "subtitle": "Lahmacun",
         "list": [
-          { "name": "Ohne Beilage", "price": "4,50 €" },
-          { "name": "Mit Salat & Sauce", "price": "7,90 €" },
-          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €" }
+          {
+            "name": "Ohne Beilage",
+            "price": "4,50 €"
+          },
+          {
+            "name": "Mit Salat & Sauce",
+            "price": "7,90 €"
+          },
+          {
+            "name": "Mit Fleisch, Salat & Sauce",
+            "price": "12,50 €"
+          },
+          {
+            "name": "Mit Fleisch-Mix, Salat & Sauce",
+            "price": "14,00 €"
+          }
         ]
       },
       {
         "title": "Extras & Beilagen",
-        "subtitle": "Für den vollen Teller.",
+        "subtitle": "Für den Extra Hunger",
         "list": [
-          { "name": "Pommes", "price": "3,50 €" },
-          { "name": "Reis", "price": "3,50 €" },
-          { "name": "Sauce (Extra)", "price": "2,00 €" },
-          { "name": "Ketchup / Mayo", "price": "0,50 €" },
-          { "name": "Brot", "price": "1,00 €" }
+          {
+            "name": "Pommes",
+            "price": "3,50 €"
+          },
+          {
+            "name": "Reis",
+            "price": "3,50 €"
+          },
+          {
+            "name": "Sauce (Extra)",
+            "price": "2,00 €"
+          },
+          {
+            "name": "Ketchup / Mayo",
+            "price": "0,50 €"
+          },
+          {
+            "name": "Brot",
+            "price": "1,00 €"
+          }
         ]
       },
       {
         "title": "Getränke",
-        "subtitle": "Eiskalt serviert.",
+        "subtitle": "Eiskalt serviert",
         "list": [
-          { "name": "Softdrink 0,33 l", "price": "3,50 €" },
-          { "name": "Wasser 0,5 l", "price": "2,50 €" },
-          { "name": "Ayran 0,25 l", "price": "2,50 €" }
+          {
+            "name": "Softdrink 0,33 l",
+            "price": "3,50 €"
+          },
+          {
+            "name": "Wasser 0,5 l",
+            "price": "2,50 €"
+          },
+          {
+            "name": "Ayran 0,25 l",
+            "price": "2,50 €"
+          }
         ]
       }
     ],
+    "info": {
+      "title": "Kennzeichnung",
+      "additives": [
+        { "n": "1", "text": "Mit Konservierungsstoffen" },
+        { "n": "2", "text": "Chininhaltig" },
+        { "n": "3", "text": "Mit Phosphat" },
+        { "n": "4", "text": "Mit Antioxidationsmittel" },
+        { "n": "5", "text": "Geschwefelt" },
+        { "n": "6", "text": "Koffeinhaltig" },
+        { "n": "7", "text": "Mit Farbstoff" },
+        { "n": "8", "text": "Mit Süßungsmittel" },
+        { "n": "9", "text": "Mit Geschmacksverstärker" },
+        { "n": "10", "text": "Geschwärzt" },
+        { "n": "11", "text": "Stabilisatoren" },
+        { "n": "12", "text": "Mit Säuerungsmittel" }
+      ],
+      "allergens": [
+        { "n": "a", "text": "Glutenhaltiges Getreide (Weizen)" },
+        { "n": "b", "text": "Krebstiere" },
+        { "n": "c", "text": "Eier" },
+        { "n": "d", "text": "Fisch" },
+        { "n": "e", "text": "Erdnüsse" },
+        { "n": "f", "text": "Milch und Laktose" },
+        { "n": "g", "text": "Schalenfrüchte (Nüsse)" },
+        { "n": "h", "text": "Lupine" },
+        { "n": "i", "text": "Weichtiere" },
+        { "n": "j", "text": "Sellerie" },
+        { "n": "k", "text": "Senf" },
+        { "n": "l", "text": "Sesamsamen" },
+        { "n": "m", "text": "Schwefeldioxid und Sulphite" },
+        { "n": "n", "text": "Soja" }
+      ]
+    },
     "foot": [
-      "Informationen zu Zusatzstoffen & Allergenen erhalten Sie gerne an der Theke.",
+      "Zusatzstoffe & Allergene – siehe Kennzeichnung unten.",
       "Alle Preise in Euro, inkl. MwSt."
     ]
   }

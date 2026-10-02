@@ -6,6 +6,7 @@
 (function () {
   "use strict";
   var page = document.body.dataset.page;
+  var IMG_BASE = document.body.dataset.imgBase || "img/";
 
   /* ---------- kleine Helfer ---------- */
   function el(tag, cls, txt) {
@@ -53,16 +54,39 @@
     '<path d="M60 108l6 12 12-4-8 12 8 12-14-6-12 8 2-14-10-10 14-2Z" fill="#5c9040"/>' +
     '</svg></span>';
 
-  /* Echte Icon-Fotos (Pommes/Ayran) aus img/. Für "cola" gibt es noch kein brauchbares
-     Icon-Foto (gelieferte Datei war ein Duplikat des Pommes-Bilds) -> Platzhalter-SVG,
-     bis ein echtes Cola-Icon nachgereicht wird. */
+  /* Echte Icon-Fotos (Pommes/Ayran) aus img/. Für "cola" gibt es kein Produktfoto
+     (markenfrei gehalten) -> handgezeichnetes Becher-Icon im selben Look. */
+  var COLA_ICON =
+    '<svg class="offer-icon offer-icon--drink" viewBox="0 0 44 84" aria-hidden="true">' +
+    '<ellipse cx="22" cy="26.5" rx="16" ry="3.4" fill="#8f160f"/>' +
+    '<path d="M6,26 L38,26 L31,82 Q31,84.5 28.5,84.5 L15.5,84.5 Q13,84.5 13,82 Z" fill="#c62418"/>' +
+    '<path d="M6,26 L17,26 L14.5,82.5 Q13,82 13,80.5 Z" fill="#e5483a" opacity=".55"/>' +
+    '<path d="M30,26 L38,26 L31,82 Q30.6,83.7 29.3,84.2 Z" fill="#8f160f" opacity=".45"/>' +
+    '<path d="M11,29 C9.7,45 9.9,63 12,81" stroke="#8f160f" stroke-width="1" fill="none" opacity=".3"/>' +
+    '<path d="M33,29 C34.3,45 34.1,63 32,81" stroke="#8f160f" stroke-width="1" fill="none" opacity=".3"/>' +
+    '<path d="M9.5,43 L34.5,43 L32.6,63 L11.4,63 Z" fill="#fff" opacity=".96"/>' +
+    '<text x="22" y="56.5" text-anchor="middle" font-family="Georgia, \'Times New Roman\', serif" ' +
+    'font-style="italic" font-weight="700" font-size="12.5" fill="#c62418">Cola</text>' +
+    '<ellipse cx="17" cy="51" rx="1.5" ry="2.6" fill="#fff" opacity=".4"/>' +
+    '<ellipse cx="29" cy="67" rx="1.2" ry="2.1" fill="#fff" opacity=".35"/>' +
+    '<path d="M5.5,26 Q22,9 38.5,26 Q22,21.5 5.5,26 Z" fill="#f4f4f4"/>' +
+    '<path d="M5.5,26 Q22,9 38.5,26 Q22,23 5.5,26 Z" fill="#fff"/>' +
+    '<path d="M13,22.5 Q22,15 31,22.5" stroke="#d9d9d9" stroke-width="1" fill="none" opacity=".7"/>' +
+    '<ellipse cx="22" cy="26.3" rx="16" ry="3" fill="#fdfdfd"/>' +
+    '<g transform="translate(25,17) rotate(-24)">' +
+    '<rect x="-1.6" y="-27" width="3.2" height="29" rx="1.6" fill="#fff"/>' +
+    '<rect x="-1.6" y="-27" width="3.2" height="29" rx="1.6" fill="none" stroke="#d6261b" stroke-width="2.6" stroke-dasharray="2.8 4.2"/>' +
+    '</g>' +
+    '<circle cx="36.5" cy="7" r="1.3" fill="#fff" opacity=".85"/>' +
+    '<circle cx="39.5" cy="13.5" r="0.9" fill="#fff" opacity=".65"/>' +
+    '<circle cx="34" cy="2.5" r="0.8" fill="#fff" opacity=".55"/>' +
+    '</svg>';
+
   function drinkIcon(kind) {
     var drink = kind === "cola"
-      ? '<svg class="offer-icon offer-icon--drink" viewBox="0 0 40 64" aria-hidden="true">' +
-        '<path d="M4 8h32l-5 52a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4z" fill="#2a1a12"/>' +
-        '<rect x="2" y="5" width="36" height="8" rx="3" fill="#3a2a20"/></svg>'
-      : '<img class="offer-icon offer-icon--drink" src="img/ayran-icon.png" alt="Ayran" loading="eager">';
-    return '<img class="offer-icon offer-icon--fries" src="img/pommes-icon.png" alt="Pommes" loading="eager">' + drink;
+      ? COLA_ICON
+      : '<img class="offer-icon offer-icon--drink" src="' + IMG_BASE + 'ayran-icon.png" alt="Ayran" loading="eager">';
+    return '<img class="offer-icon offer-icon--fries" src="' + IMG_BASE + 'pommes-icon.png" alt="Pommes" loading="eager">' + drink;
   }
 
   /* ---------- Kopfzeile ---------- */
@@ -94,10 +118,8 @@
     return h;
   }
 
-  /* ---------- Seite 1: Preis-Karte (Bild links, Preise rechts) ---------- */
-  function buildMatrixCard(c) {
-    var card = el("article", "card card--photo");
-
+  /* ---------- Gemeinsam: Titel(-Bild) + Notiz + Produktfoto ---------- */
+  function buildCardMain(c) {
     var main = el("div", "card-main");
 
     var head = el("div", c.titleImage ? "card-head card-head--image" : "card-head");
@@ -112,25 +134,36 @@
     }
     main.appendChild(head);
 
-    var note = el("div", "card-note");
-    var nt = el("span", "note-text"); lines(nt, c.note);
-    note.appendChild(nt);
-    note.insertAdjacentHTML("beforeend", ARROW);
-    main.appendChild(note);
+    if (c.note) {
+      var note = el("div", "card-note");
+      var nt = el("span", "note-text"); lines(nt, c.note);
+      note.appendChild(nt);
+      note.insertAdjacentHTML("beforeend", ARROW);
+      main.appendChild(note);
+    }
 
-    var media = el("div", "card-media");
-    var pi = el("img", "food"); pi.src = c.image; pi.alt = c.title; pi.loading = "eager";
-    media.appendChild(pi);
-    main.appendChild(media);
+    if (c.image) {
+      var media = el("div", "card-media");
+      var pi = el("img", "food"); pi.src = c.image; pi.alt = c.title; pi.loading = "eager";
+      media.appendChild(pi);
+      main.appendChild(media);
+    }
 
-    card.appendChild(main);
+    return main;
+  }
+
+  /* ---------- Seite 1: Preis-Karte (Bild links, Preise rechts) ---------- */
+  function buildMatrixCard(c) {
+    var card = el("article", "card card--photo");
+    card.appendChild(buildCardMain(c));
 
     if (c.tiles) {
       var box = el("div", "card-prices");
       if (c.portion) box.appendChild(el("p", "portion", c.portion));
       var tiles = el("div", "tiles");
       c.tiles.forEach(function (t) {
-        var tl = el("div", "tile" + (t.mix ? " is-mix" : ""));
+        var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
+        var tl = el("div", ("tile " + kind).trim());
         tl.appendChild(el("div", "t-label", t.label));
         tl.appendChild(el("div", "t-price", t.price));
         tiles.appendChild(tl);
@@ -144,8 +177,8 @@
     var thead = el("thead");
     var tr = el("tr");
     tr.appendChild(el("th", "c-size", c.head));
-    tr.appendChild(el("th", null, "Hähnchen"));
-    tr.appendChild(el("th", null, "Steak"));
+    tr.appendChild(el("th", "haehnchen", "Hähnchen"));
+    tr.appendChild(el("th", "steak", "Steak"));
     var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thm);
     thead.appendChild(tr); table.appendChild(thead);
 
@@ -156,8 +189,8 @@
       td0.appendChild(el("b", null, r.label));
       if (r.sub) td0.appendChild(el("small", null, " " + r.sub));
       row.appendChild(td0);
-      row.appendChild(el("td", null, r.haehnchen));
-      row.appendChild(el("td", null, r.steak));
+      row.appendChild(el("td", "haehnchen", r.haehnchen));
+      row.appendChild(el("td", "steak", r.steak));
       row.appendChild(el("td", "mix", r.mix));
       tb.appendChild(row);
     });
@@ -166,15 +199,7 @@
     return card;
   }
 
-  /* ---------- Seite 2: Listen-Karte ---------- */
-  function buildListCard(c) {
-    var card = el("article", "card card--list");
-    var head = el("div", "card-head");
-    var h2 = el("h2", "card-title"); h2.textContent = c.title;
-    head.appendChild(h2);
-    if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
-    card.appendChild(head);
-
+  function buildPriceList(c) {
     var list = el("div", "list");
     c.list.forEach(function (it) {
       var row = el("div", "item");
@@ -183,7 +208,53 @@
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
-    card.appendChild(list);
+    return list;
+  }
+
+  /* ---------- Listen-Karte: mit Produktfoto (Bild links, Liste rechts) ODER
+     ohne Foto (volle Breite, nur Liste – Standard auf Seite 2) ---------- */
+  function buildListCard(c) {
+    if (c.image) {
+      var pcard = el("article", "card card--photo");
+      pcard.appendChild(buildCardMain(c));
+      var box = el("div", "card-prices");
+      box.appendChild(buildPriceList(c));
+      pcard.appendChild(box);
+      return pcard;
+    }
+
+    var card = el("article", "card card--list");
+    var head = el("div", "card-head");
+    var h2 = el("h2", "card-title"); h2.textContent = c.title;
+    head.appendChild(h2);
+    if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    card.appendChild(head);
+    card.appendChild(buildPriceList(c));
+    return card;
+  }
+
+  /* ---------- Seite 2: Zusatzstoffe & Allergene (eigene Kachel, unten) ---------- */
+  function buildInfoCard(info) {
+    var card = el("article", "card card--info");
+    if (info.title) card.appendChild(el("h2", "info-title", info.title));
+
+    var cols = el("div", "info-cols");
+    function col(label, items) {
+      if (!items || !items.length) return;
+      var c = el("div", "info-col");
+      c.appendChild(el("h3", null, label));
+      var p = el("p");
+      items.forEach(function (it, i) {
+        p.appendChild(el("b", null, it.n));
+        p.appendChild(document.createTextNode(" " + it.text));
+        if (i < items.length - 1) p.appendChild(document.createTextNode(" · "));
+      });
+      c.appendChild(p);
+      cols.appendChild(c);
+    }
+    col("Zusatzstoffe", info.additives);
+    col("Allergene", info.allergens);
+    card.appendChild(cols);
     return card;
   }
 
@@ -233,15 +304,16 @@
 
     var grid = el("main", "grid");
     D.cards.forEach(function (c) {
-      grid.appendChild(page === "seite1" ? buildMatrixCard(c) : buildListCard(c));
+      grid.appendChild(c.list ? buildListCard(c) : buildMatrixCard(c));
     });
     board.appendChild(grid);
 
     if (D.menu) board.appendChild(buildMenuBar(D.menu));
+    if (D.info) board.appendChild(buildInfoCard(D.info));
     board.appendChild(buildFoot(D.foot));
   }
 
-  fetch("content/menu.json")
+  fetch(document.body.dataset.source || "content/menu.json")
     .then(function (r) { return r.json(); })
     .then(render)
     .catch(function (err) { console.error("Menü konnte nicht geladen werden:", err); });
