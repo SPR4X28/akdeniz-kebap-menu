@@ -80,6 +80,10 @@ body{width:100%;height:100%;overflow:hidden;background:var(--cream)}
 .deco{filter:blur(1.4px)}
 .deco-leaves{top:-5rem;right:-5rem;width:40rem;height:40rem;opacity:.42;transform:rotate(8deg)}
 .deco-tomato{left:-5rem;bottom:12rem;width:44rem;height:40rem;opacity:.5}
+/* Seite 2: Kennzeichnung-Kachel sitzt genau in der Zone, in der die Tomaten-
+   Deko sonst hervorlugt und die runden Ecken der Karten optisch stört ->
+   auf Seite 2 ausgeblendet. */
+body[data-page="seite2"] .deco-tomato{display:none}
 
 /* ---------- Kopfzeile (auf Creme, kein dunkler Balken) ---------- */
 .masthead{
@@ -117,7 +121,6 @@ body{width:100%;height:100%;overflow:hidden;background:var(--cream)}
   display:flex;flex-wrap:wrap;gap:2.8rem;
   align-content:stretch;justify-content:center;
   padding:1.6rem 0;
-  overflow:hidden;
 }
 .grid > .card{flex:1 1 calc(50% - 1.4rem);min-width:0}
 .board{justify-content:flex-start}
@@ -356,8 +359,8 @@ body[data-layout="six"] .card:nth-child(2) .food{width:92%;height:92%;bottom:24%
 body[data-layout="six"] .card:nth-child(3) .note-arrow{transform:scaleX(-1) rotate(60deg)}
 body[data-layout="six"] .card:nth-child(3) .card-head--image{top:.6rem;left:6rem}
 body[data-layout="six"] .card:nth-child(3) .card-title-img{height:19rem}
-body[data-layout="six"] .card:nth-child(3) .portion{font-size:2.9rem}
-body[data-layout="six"] .card:nth-child(3) .food{width:68%;height:68%}
+body[data-layout="six"] .card:nth-child(3) .portion{font-size:2.9rem;text-align:center}
+body[data-layout="six"] .card:nth-child(3) .food{width:68%;height:68%;bottom:9%}
 /* Döner-Box: Kacheln prägnanter (größer, fette Schrift) */
 body[data-layout="six"] .card:nth-child(3) .tiles{gap:1.6rem;margin-top:2rem}
 body[data-layout="six"] .card:nth-child(3) .tile{padding:4.4rem .8rem 4.2rem}
@@ -430,13 +433,13 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
 /* ================================================================
    SEITE 2 – Listen-Karten
    ================================================================ */
-.card--list{padding:4.4rem 5rem 4rem}
+.card--list{padding:3.6rem 5rem 3.2rem}
 .card--list .card-title{font-size:7rem}
 .card--list .card-sub{margin-top:1.4rem}
-.list{display:flex;flex-direction:column;margin-top:3rem}
+.list{display:flex;flex-direction:column;margin-top:2.2rem}
 .list .item{
   display:flex;align-items:baseline;gap:2.4rem;
-  padding:2.5rem 0;border-top:.2rem solid var(--line-soft);
+  padding:2.1rem 0;border-top:.2rem solid var(--line-soft);
 }
 .list .item:first-child{border-top:0}
 .list .name{
