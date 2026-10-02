@@ -152,24 +152,28 @@
     return main;
   }
 
+  function buildTilesBox(c) {
+    var box = el("div", "card-prices");
+    if (c.portion) box.appendChild(el("p", "portion", c.portion));
+    var tiles = el("div", "tiles");
+    c.tiles.forEach(function (t) {
+      var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
+      var tl = el("div", ("tile " + kind).trim());
+      tl.appendChild(el("div", "t-label", t.label));
+      tl.appendChild(el("div", "t-price", t.price));
+      tiles.appendChild(tl);
+    });
+    box.appendChild(tiles);
+    return box;
+  }
+
   /* ---------- Seite 1: Preis-Karte (Bild links, Preise rechts) ---------- */
   function buildMatrixCard(c) {
     var card = el("article", "card card--photo");
     card.appendChild(buildCardMain(c));
 
     if (c.tiles) {
-      var box = el("div", "card-prices");
-      if (c.portion) box.appendChild(el("p", "portion", c.portion));
-      var tiles = el("div", "tiles");
-      c.tiles.forEach(function (t) {
-        var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
-        var tl = el("div", ("tile " + kind).trim());
-        tl.appendChild(el("div", "t-label", t.label));
-        tl.appendChild(el("div", "t-price", t.price));
-        tiles.appendChild(tl);
-      });
-      box.appendChild(tiles);
-      card.appendChild(box);
+      card.appendChild(buildTilesBox(c));
       return card;
     }
 
@@ -230,6 +234,18 @@
     if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
     card.appendChild(head);
     card.appendChild(buildPriceList(c));
+    return card;
+  }
+
+  /* ---------- Kacheln ohne Foto, volle Breite (z.B. normale Pizza Seite 2) ---------- */
+  function buildTilesOnlyCard(c) {
+    var card = el("article", "card card--list card--tiles-only");
+    var head = el("div", "card-head");
+    var h2 = el("h2", "card-title"); h2.textContent = c.title;
+    head.appendChild(h2);
+    if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    card.appendChild(head);
+    card.appendChild(buildTilesBox(c));
     return card;
   }
 
@@ -304,7 +320,10 @@
 
     var grid = el("main", "grid");
     D.cards.forEach(function (c) {
-      grid.appendChild(c.list ? buildListCard(c) : buildMatrixCard(c));
+      var node = c.list ? buildListCard(c)
+        : (c.tiles && !c.image) ? buildTilesOnlyCard(c)
+        : buildMatrixCard(c);
+      grid.appendChild(node);
     });
     board.appendChild(grid);
 

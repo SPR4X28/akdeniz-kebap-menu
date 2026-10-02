@@ -85,7 +85,7 @@
     ],
     "menu": {
       "title": "Mach's zum Menü",
-      "text": "Unser Spar-Tipp für Döner Pita, Dürüm, Lahmacun zum Menü erweitern.",
+      "text": "Unser Spar-Tipp für Döner Pita, Dürüm, Türkische Pizza und Rollo.",
       "offers": [
         { "icon": "cola", "label": "+ Pommes & Softdrink 0,33 l", "price": "+ 5,50 €" },
         { "icon": "ayran", "label": "+ Pommes & Wasser / Ayran", "price": "+ 4,90 €" }
@@ -113,12 +113,12 @@
       {
         "title": "Pizza",
         "subtitle": "32 cm · Ofenfrisch",
-        "list": [
-          { "name": "Margherita", "price": "10,00 €" },
-          { "name": "Tonno", "price": "11,50 €" },
-          { "name": "Sucuk", "price": "11,50 €" },
-          { "name": "Steak", "price": "12,50 €" },
-          { "name": "Chicken", "price": "12,00 €" }
+        "tiles": [
+          { "label": "Margherita", "price": "10,00 €", "kind": "plain" },
+          { "label": "Tonno", "price": "11,50 €", "kind": "is-mix" },
+          { "label": "Sucuk", "price": "11,50 €", "kind": "haehnchen" },
+          { "label": "Steak", "price": "12,50 €", "kind": "steak" },
+          { "label": "Chicken", "price": "12,00 €", "kind": "salad" }
         ]
       },
       {

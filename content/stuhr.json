@@ -60,7 +60,7 @@
     ],
     "menu": {
       "title": "Mach's zum Menü",
-      "text": "Unser Spar-Tipp für Döner Pita, Dürüm, Lahmacun zum Menü erweitern.",
+      "text": "Unser Spar-Tipp für Döner Pita und Dürüm zum Menü erweitern.",
       "offers": [
         { "icon": "cola", "label": "+ Pommes & Softdrink 0,33 l", "price": "+ 5,50 €" },
         { "icon": "ayran", "label": "+ Pommes & Wasser / Ayran", "price": "+ 4,90 €" }

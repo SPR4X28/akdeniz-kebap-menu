@@ -94,13 +94,24 @@ collections:
                 fields:
                   - { label: "Titel", name: "title", widget: string }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
-                  - label: "Positionen"
+                  - label: "Positionen (einfache Liste)"
                     name: "list"
                     widget: list
+                    required: false
                     summary: "{{name}} – {{price}}"
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+                  - label: "Preis-Kacheln (statt Liste, z.B. Pizza)"
+                    name: "tiles"
+                    widget: list
+                    required: false
+                    summary: "{{label}} – {{price}}"
+                    fields:
+                      - { label: "Bezeichnung", name: "label", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
+                      - { label: "Ist Fleisch-Mix? (alte Box-Kacheln)", name: "mix", widget: boolean, required: false, default: false }
+                      - { label: "Farbe", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
               - label: "Zusatzstoffe & Allergene (eigene Kachel unten auf Seite 2)"
                 name: "info"
                 widget: object
