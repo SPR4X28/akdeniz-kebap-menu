@@ -241,26 +241,30 @@ body[data-page="seite2"] .deco-tomato{display:none}
 
 /* ---------- Preis-Matrix (rechte Spalte) ---------- */
 .card--photo > .matrix,
-.card--photo > .card-prices{flex:1 1 56%;min-width:0;align-self:center}
+.card--photo > .card-prices{flex:1 1 56%;min-width:0;align-self:stretch}
 .card-prices{display:flex;flex-direction:column}
+/* Preis-Spalten ziehen über die volle Kartenhöhe (Tabelle füllt die Karte,
+   die Zeilen teilen sich die Höhe, der Mix-Balken läuft von oben bis unten) */
 .matrix{
-  width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;
+  width:100%;height:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;
   position:relative;z-index:4;
 }
 .matrix th{
   font-family:var(--f-head);font-weight:400;
-  font-size:2.3rem;letter-spacing:.04em;text-transform:uppercase;
+  font-size:2.6rem;letter-spacing:.04em;text-transform:uppercase;
   color:var(--muted);padding:0 1rem 1.6rem;text-align:center;
   line-height:1.04;vertical-align:bottom;white-space:nowrap;
 }
-.matrix th.c-size{text-align:left;padding-left:.4rem;width:30%;color:var(--ink)}
-.matrix th:not(.c-size){width:23.3%}
-.matrix th.haehnchen{color:var(--flame);font-size:2.8rem}
-.matrix th.steak{color:var(--steak);font-size:2.8rem}
+/* Größen-Spalte schmal (Grammzahl steht unter M/L/XL), damit die drei
+   Preis-Spalten genug Breite haben und sich nicht überschneiden */
+.matrix th.c-size{text-align:left;padding-left:.4rem;width:16%;color:var(--ink)}
+.matrix th:not(.c-size){width:28%}
+.matrix th.haehnchen{color:var(--flame);font-size:3rem}
+.matrix th.steak{color:var(--steak);font-size:3rem}
 .matrix td{
   padding:3.2rem 1rem;border-top:.2rem solid var(--line-soft);
   font-family:var(--f-price);font-weight:var(--f-price-w);
-  font-size:3.8rem;font-variant-numeric:tabular-nums;
+  font-size:4.4rem;font-variant-numeric:tabular-nums;
   color:var(--flame);text-align:center;line-height:1;white-space:nowrap;
 }
 .matrix td.steak{color:var(--steak)}
@@ -269,7 +273,7 @@ body[data-page="seite2"] .deco-tomato{display:none}
   font-family:var(--f-body);color:var(--ink);
 }
 .matrix td.c-size b{font-weight:800;font-size:3.9rem}
-.matrix td.c-size small{font-size:2.6rem;font-weight:500;color:var(--muted)}
+.matrix td.c-size small{display:block;margin-top:.5rem;font-size:2.6rem;font-weight:500;color:var(--muted);line-height:1}
 
 /* Empfehlungs-Spalte "Fleisch-Mix" – getöntes Feld mit runden Ecken */
 .matrix .mix{background:var(--teal-tint);color:var(--teal)}
@@ -283,8 +287,10 @@ body[data-page="seite2"] .deco-tomato{display:none}
   font-family:var(--f-head);font-size:2.5rem;letter-spacing:.04em;
   text-transform:uppercase;color:var(--steak);
 }
-.tiles{flex:none;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.4rem}
+/* Kacheln füllen (wie die Preis-Tabelle) die restliche Kartenhöhe */
+.tiles{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:2rem;margin-top:2.4rem}
 .tile{
+  display:flex;flex-direction:column;justify-content:center;
   background:var(--teal-tint);border-radius:2.2rem;
   padding:5.4rem 1rem 5rem;text-align:center;
 }
@@ -294,7 +300,7 @@ body[data-page="seite2"] .deco-tomato{display:none}
 .tile.salad{background:rgba(92,139,60,.14)}
 .tile.plain{background:rgba(184,134,11,.14)}
 .tile .t-label{
-  font-family:var(--f-head);font-size:2.2rem;letter-spacing:.03em;
+  font-family:var(--f-head);font-size:2.6rem;letter-spacing:.03em;
   text-transform:uppercase;color:var(--muted);line-height:1.05;
 }
 .tile.is-mix .t-label{color:var(--teal)}
@@ -305,7 +311,7 @@ body[data-page="seite2"] .deco-tomato{display:none}
 .tile .t-price{
   margin-top:1.4rem;
   font-family:var(--f-price);font-weight:var(--f-price-w);
-  font-size:4rem;font-variant-numeric:tabular-nums;color:var(--flame);line-height:1;
+  font-size:4.4rem;font-variant-numeric:tabular-nums;color:var(--flame);line-height:1;
 }
 .tile.is-mix .t-price{color:var(--teal)}
 .tile.steak .t-price{color:var(--steak)}
@@ -316,6 +322,7 @@ body[data-page="seite2"] .deco-tomato{display:none}
    flexibles Umbruch-Raster statt starrer 3-Spalten, letzte (ungerade) Reihe
    bleibt dadurch zentriert statt mit Lücke am Rand. */
 .card--tiles-only .tiles{
+  flex:none;
   display:flex;flex-wrap:wrap;justify-content:center;
   grid-template-columns:none;
 }
@@ -377,8 +384,8 @@ body[data-layout="six"] .card:nth-child(4) .note-text{
 /* Döner-Teller: Preistabelle größer + nach oben, dabei nicht mehr mit dem
    Foto überlappen (Foto bleibt unangetastet, Tabelle bekommt mehr Abstand) */
 body[data-layout="six"] .card:nth-child(4) .card-media{margin-right:-.4rem}
-body[data-layout="six"] .card:nth-child(4) .matrix{align-self:center;margin-left:1rem}
-body[data-layout="six"] .card:nth-child(4) .matrix th{font-size:2.2rem}
+body[data-layout="six"] .card:nth-child(4) .matrix{margin-left:1rem}
+body[data-layout="six"] .card:nth-child(4) .matrix th{font-size:2.4rem}
 body[data-layout="six"] .card:nth-child(4) .matrix td{font-size:3.7rem}
 body[data-layout="six"] .card:nth-child(4) .matrix td.c-size b{font-size:3.7rem}
 body[data-layout="six"] .card:nth-child(4) .matrix td.c-size small{font-size:2.4rem}
@@ -411,17 +418,17 @@ body[data-layout="six"] .card:nth-child(5) .note-text,
 body[data-layout="six"] .card:nth-child(6) .note-text{font-size:4.3rem}
 body[data-layout="six"] .card--photo > .matrix,
 body[data-layout="six"] .card--photo > .card-prices{flex:1 1 58%}
-body[data-layout="six"] .matrix th{font-size:2.2rem;padding:0 .6rem 1.1rem}
+body[data-layout="six"] .matrix th{font-size:2.4rem;padding:0 .6rem 1.1rem}
 body[data-layout="six"] .matrix th.haehnchen,
 body[data-layout="six"] .matrix th.steak{font-size:2.7rem}
 body[data-layout="six"] .matrix td{font-size:3.7rem;padding:2rem .6rem}
 body[data-layout="six"] .matrix td.c-size b{font-size:3.7rem}
-body[data-layout="six"] .matrix td.c-size small{font-size:2.4rem}
+body[data-layout="six"] .matrix td.c-size small{font-size:2.4rem;margin-top:.4rem}
 body[data-layout="six"] .portion{font-size:1.7rem;margin-top:.6rem}
 body[data-layout="six"] .tiles{gap:1.4rem;margin-top:1.6rem}
 body[data-layout="six"] .tile{padding:3.6rem .8rem 3.4rem}
-body[data-layout="six"] .tile .t-label{font-size:1.9rem}
-body[data-layout="six"] .tile .t-price{font-size:3.4rem;margin-top:1rem}
+body[data-layout="six"] .tile .t-label{font-size:2.1rem}
+body[data-layout="six"] .tile .t-price{font-size:3.6rem;margin-top:1rem}
 body[data-layout="six"] .card--list{padding:2.6rem 2.8rem 2.4rem}
 body[data-layout="six"] .card--list .card-title{font-size:4rem}
 body[data-layout="six"] .card--list .card-sub{font-size:1.9rem;margin-top:.6rem}
