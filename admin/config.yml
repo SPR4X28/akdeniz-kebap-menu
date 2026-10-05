@@ -102,6 +102,7 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+                      - { label: "Mini-Bild (optional, links vom Namen)", name: "image", widget: image, required: false }
                   - label: "Preis-Kacheln (statt Liste, z.B. Pizza)"
                     name: "tiles"
                     widget: list

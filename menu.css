@@ -442,15 +442,17 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
 .card--list .card-sub{margin-top:1.4rem}
 .list{display:flex;flex-direction:column;margin-top:2.2rem}
 .list .item{
-  display:flex;align-items:baseline;gap:2.4rem;
+  display:flex;align-items:center;gap:2.4rem;
   padding:2.1rem 0;border-top:.2rem solid var(--line-soft);
 }
 .list .item:first-child{border-top:0}
 .list .name{
   font-family:var(--f-body);font-size:3.9rem;font-weight:600;color:var(--ink);
-  flex:0 1 auto;
+  flex:1 1 auto;min-width:0;
 }
-.list .dots{flex:1;min-width:2rem;border-bottom:.35rem dotted rgba(154,138,112,.6);transform:translateY(-1rem)}
+/* Mini-Bild (optional, pro Position im CMS setzbar) */
+.list .thumb{flex:none;width:7rem;height:5.6rem;object-fit:contain;margin-right:-.6rem;
+  filter:drop-shadow(0 .6rem .8rem rgba(40,25,10,.22))}
 .list .price{
   font-family:var(--f-price);font-weight:var(--f-price-w);
   font-size:3.9rem;font-variant-numeric:tabular-nums;

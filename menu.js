@@ -207,8 +207,13 @@
     var list = el("div", "list");
     c.list.forEach(function (it) {
       var row = el("div", "item");
+      /* optionales Mini-Bild links vom Namen (ohne Bild: nur Name + Preis) */
+      if (it.image) {
+        var thumb = el("img", "thumb");
+        thumb.src = it.image; thumb.alt = ""; thumb.loading = "eager";
+        row.appendChild(thumb);
+      }
       row.appendChild(el("span", "name", it.name));
-      row.appendChild(el("span", "dots"));
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
