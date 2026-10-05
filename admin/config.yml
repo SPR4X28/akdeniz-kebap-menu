@@ -112,6 +112,16 @@ collections:
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Ist Fleisch-Mix? (alte Box-Kacheln)", name: "mix", widget: boolean, required: false, default: false }
                       - { label: "Farbe", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
+                  - label: "Produkt-Raster mit Bildern (statt Liste, z.B. Falafel & Halloumi, Pizzen)"
+                    name: "gallery"
+                    widget: list
+                    required: false
+                    summary: "{{name}} – {{price}}"
+                    fields:
+                      - { label: "Name", name: "name", widget: string }
+                      - { label: "Preis", name: "price", widget: string }
+                      - { label: "Bild (über dem Namen, freigestellt am besten)", name: "image", widget: image, required: false }
+                      - { label: "Farbe (optional)", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
               - label: "Zusatzstoffe & Allergene (eigene Kachel unten auf Seite 2)"
                 name: "info"
                 widget: object

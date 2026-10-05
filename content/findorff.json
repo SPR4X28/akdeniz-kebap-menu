@@ -103,22 +103,27 @@
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €" }
+        ]
+      },
+      {
+        "title": "Falafel & Halloumi",
+        "gallery": [
+          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "image": "" },
+          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Box", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €", "image": "" }
         ]
       },
       {
         "title": "Pizza",
         "subtitle": "32 cm · Ofenfrisch",
-        "tiles": [
-          { "label": "Margherita", "price": "10,00 €", "kind": "plain" },
-          { "label": "Tonno", "price": "11,50 €", "kind": "is-mix" },
-          { "label": "Sucuk", "price": "11,50 €", "kind": "haehnchen" },
-          { "label": "Steak", "price": "12,50 €", "kind": "steak" },
-          { "label": "Chicken", "price": "12,00 €", "kind": "salad" }
+        "gallery": [
+          { "name": "Margherita", "price": "10,00 €", "image": "", "kind": "plain" },
+          { "name": "Tonno", "price": "11,50 €", "image": "", "kind": "is-mix" },
+          { "name": "Sucuk", "price": "11,50 €", "image": "", "kind": "haehnchen" },
+          { "name": "Steak", "price": "12,50 €", "image": "", "kind": "steak" },
+          { "name": "Chicken", "price": "12,00 €", "image": "", "kind": "salad" }
         ]
       },
       {

@@ -78,21 +78,26 @@
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €" }
+        ]
+      },
+      {
+        "title": "Falafel & Halloumi",
+        "gallery": [
+          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "image": "" },
+          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Box", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €", "image": "" }
         ]
       },
       {
         "title": "Türkische Pizza",
         "subtitle": "Lahmacun",
-        "list": [
-          { "name": "Ohne Beilage", "price": "4,50 €" },
-          { "name": "Mit Salat & Sauce", "price": "7,90 €" },
-          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €" },
-          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €" }
+        "gallery": [
+          { "name": "Ohne Beilage", "price": "4,50 €", "image": "" },
+          { "name": "Mit Salat & Sauce", "price": "7,90 €", "image": "" },
+          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "" },
+          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "" }
         ]
       },
       {
