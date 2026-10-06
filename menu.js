@@ -207,8 +207,13 @@
     var list = el("div", "list");
     c.list.forEach(function (it) {
       var row = el("div", "item");
+      /* optionales Mini-Bild links vom Namen (ohne Bild: nur Name + Preis) */
+      if (it.image) {
+        var thumb = el("img", "thumb");
+        thumb.src = it.image; thumb.alt = ""; thumb.loading = "eager";
+        row.appendChild(thumb);
+      }
       row.appendChild(el("span", "name", it.name));
-      row.appendChild(el("span", "dots"));
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
@@ -247,6 +252,64 @@
     card.appendChild(head);
     card.appendChild(buildTilesBox(c));
     return card;
+  }
+
+  /* ---------- Produkt-Raster: jedes Produkt mit eigenem Bild oben, darunter
+     Name + Preis (z.B. Falafel & Halloumi, Pizzen). Fehlt das Bild noch,
+     steht ein dezenter Platzhalter an seiner Stelle. ---------- */
+  var PLACEHOLDER = '<svg class="g-ph" viewBox="0 0 64 64" aria-hidden="true">' +
+    '<circle cx="32" cy="34" r="20" fill="none" stroke="currentColor" stroke-width="3"/>' +
+    '<circle cx="32" cy="34" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/>' +
+    '<path d="M8 10v14M4 10v10a4 4 0 0 0 8 0V10M8 24v30M56 10c-5 3-6 10-6 16h6v28" fill="none" ' +
+    'stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function buildGalleryCard(c) {
+    var card = el("article", "card card--gallery");
+    var head = el("div", "card-head");
+    var h2 = el("h2", "card-title"); h2.textContent = c.title;
+    head.appendChild(h2);
+    if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    card.appendChild(head);
+
+    var gal = el("div", "gallery");
+    c.gallery.forEach(function (it) {
+      var item = el("div", ("g-item " + (it.kind || "")).trim());
+      var media = el("div", "g-media");
+      if (it.image) {
+        var img = el("img", "g-img");
+        img.src = it.image; img.alt = it.name; img.loading = "eager";
+        media.appendChild(img);
+      } else {
+        media.classList.add("is-empty");
+        media.insertAdjacentHTML("beforeend", PLACEHOLDER);
+      }
+      item.appendChild(media);
+      item.appendChild(el("div", "g-name", it.name));
+      item.appendChild(el("div", "g-price", it.price));
+      gal.appendChild(item);
+    });
+    card.appendChild(gal);
+    return card;
+  }
+
+  /* Seite 2: Karten in zwei Reihen verteilen. Produkt-Raster zählen doppelt so
+     breit wie Listen; die Reihen werden so geteilt, dass beide möglichst
+     gleich viel Gewicht tragen. */
+  function buildRows(nodes, cards) {
+    var w = cards.map(function (c) { return c.gallery ? 2 : 1; });
+    var total = w.reduce(function (a, b) { return a + b; }, 0);
+    var cut = 1, best = Infinity, sum = 0;
+    for (var i = 0; i < w.length - 1; i++) {
+      sum += w[i];
+      if (Math.abs(sum * 2 - total) < best) { best = Math.abs(sum * 2 - total); cut = i + 1; }
+    }
+    var grid = el("main", "grid grid--rows");
+    [nodes.slice(0, cut), nodes.slice(cut)].forEach(function (part, r) {
+      var row = el("div", "grid-row");
+      part.forEach(function (n, j) { n.style.flexGrow = w[r ? cut + j : j]; row.appendChild(n); });
+      grid.appendChild(row);
+    });
+    return grid;
   }
 
   /* ---------- Seite 2: Zusatzstoffe & Allergene (eigene Kachel, unten) ---------- */
@@ -318,13 +381,20 @@
     board.insertAdjacentHTML("beforeend", DECO);
     board.appendChild(buildHead());
 
-    var grid = el("main", "grid");
-    D.cards.forEach(function (c) {
-      var node = c.list ? buildListCard(c)
+    var nodes = D.cards.map(function (c) {
+      return c.gallery ? buildGalleryCard(c)
+        : c.list ? buildListCard(c)
         : (c.tiles && !c.image) ? buildTilesOnlyCard(c)
         : buildMatrixCard(c);
-      grid.appendChild(node);
     });
+    var hasGallery = D.cards.some(function (c) { return c.gallery; });
+    var grid;
+    if (hasGallery) {
+      grid = buildRows(nodes, D.cards);
+    } else {
+      grid = el("main", "grid");
+      nodes.forEach(function (n) { grid.appendChild(n); });
+    }
     board.appendChild(grid);
 
     if (D.menu) board.appendChild(buildMenuBar(D.menu));
