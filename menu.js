@@ -207,10 +207,14 @@
     var list = el("div", "list");
     c.list.forEach(function (it) {
       var row = el("div", "item");
-      /* optionales Mini-Bild links vom Namen (ohne Bild: nur Name + Preis) */
-      if (it.image) {
-        var thumb = el("img", "thumb");
-        thumb.src = it.image; thumb.alt = ""; thumb.loading = "eager";
+      /* optionales Mini-Bild links vom Namen. Feld fehlt: nur Name + Preis.
+         Feld leer: runder Platzhalter (Bild folgt). */
+      if ("image" in it) {
+        var thumb = el("span", it.image ? "thumb" : "thumb is-empty");
+        if (it.image) {
+          var ti = el("img"); ti.src = it.image; ti.alt = ""; ti.loading = "eager";
+          thumb.appendChild(ti);
+        }
         row.appendChild(thumb);
       }
       row.appendChild(el("span", "name", it.name));
@@ -303,11 +307,20 @@
       sum += w[i];
       if (Math.abs(sum * 2 - total) < best) { best = Math.abs(sum * 2 - total); cut = i + 1; }
     }
+    /* Festes Spalten-Raster: beide Reihen teilen sich dieselben Spalten,
+       dadurch fluchten alle Kartenkanten. Die letzte Karte einer kürzeren
+       Reihe füllt den Rest auf. */
+    var rowSum = [0, 0];
+    w.forEach(function (x, i) { rowSum[i < cut ? 0 : 1] += x; });
+    var cols = Math.max(rowSum[0], rowSum[1]);
     var grid = el("main", "grid grid--rows");
-    [nodes.slice(0, cut), nodes.slice(cut)].forEach(function (part, r) {
-      var row = el("div", "grid-row");
-      part.forEach(function (n, j) { n.style.flexGrow = w[r ? cut + j : j]; row.appendChild(n); });
-      grid.appendChild(row);
+    grid.style.gridTemplateColumns = "repeat(" + cols + ", minmax(0, 1fr))";
+    nodes.forEach(function (n, i) {
+      var r = i < cut ? 0 : 1;
+      var last = i === cut - 1 || i === nodes.length - 1;
+      var span = w[i] + (last ? cols - rowSum[r] : 0);
+      n.style.gridColumn = "span " + span;
+      grid.appendChild(n);
     });
     return grid;
   }

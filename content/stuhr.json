@@ -77,11 +77,11 @@
         "title": "Veggie Gerichte",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
-          { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
-          { "name": "Veggie Chicken Pita", "price": "" },
-          { "name": "Veggie Chicken Dürüm", "price": "" },
-          { "name": "Veggie Chicken Teller", "price": "" }
+          { "name": "Veggie Pita", "price": "6,90 €", "image": "" },
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "image": "" },
+          { "name": "Veggie Chicken Pita", "price": "", "image": "" },
+          { "name": "Veggie Chicken Dürüm", "price": "", "image": "" },
+          { "name": "Veggie Chicken Teller", "price": "", "image": "" }
         ]
       },
       {
@@ -97,10 +97,10 @@
       {
         "title": "Falafel & Halloumi",
         "list": [
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "image": "" },
+          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Box", "price": "8,90 €", "image": "" },
+          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €", "image": "" }
         ]
       },
       {

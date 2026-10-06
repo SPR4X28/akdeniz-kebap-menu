@@ -451,8 +451,14 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
   flex:1 1 auto;min-width:0;
 }
 /* Mini-Bild (optional, pro Position im CMS setzbar) */
-.list .thumb{flex:none;width:7rem;height:5.6rem;object-fit:contain;margin-right:-.6rem;
-  filter:drop-shadow(0 .6rem .8rem rgba(40,25,10,.22))}
+.list .thumb{
+  flex:none;width:6.4rem;height:6.4rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card-lo);border:.15rem solid var(--line-soft);
+  margin:-.8rem -.4rem -.8rem 0;
+}
+.list .thumb img{width:88%;height:88%;object-fit:contain;filter:drop-shadow(0 .4rem .6rem rgba(40,25,10,.22))}
+.list .thumb.is-empty{background:transparent;border:.2rem dashed rgba(154,138,112,.4)}
 .list .price{
   font-family:var(--f-price);font-weight:var(--f-price-w);
   font-size:3.9rem;font-variant-numeric:tabular-nums;
@@ -460,9 +466,8 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
 }
 
 /* ---------- Seite 2 mit Produkt-Raster: Karten in zwei Reihen ---------- */
-.grid--rows{flex-direction:column;flex-wrap:nowrap;align-content:normal}
-.grid-row{flex:1 1 0;min-height:0;display:flex;gap:2.8rem}
-.grid-row > .card{flex:1 1 0;min-width:0}
+.grid--rows{display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:2.8rem}
+.grid--rows > .card{min-width:0;min-height:0}
 .grid--rows .card--list{padding:3rem 3.6rem 2.6rem}
 .grid--rows .card--list .card-title{font-size:6rem}
 .grid--rows .list{margin-top:1.2rem}
