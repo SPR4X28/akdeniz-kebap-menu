@@ -110,11 +110,11 @@
         "title": "Pizza",
         "subtitle": "32 cm · Ofenfrisch",
         "gallery": [
-          { "name": "Margherita", "price": "10,00 €", "image": "", "kind": "plain" },
-          { "name": "Tonno", "price": "11,50 €", "image": "", "kind": "is-mix" },
-          { "name": "Sucuk", "price": "11,50 €", "image": "", "kind": "haehnchen" },
-          { "name": "Steak", "price": "12,50 €", "image": "", "kind": "steak" },
-          { "name": "Chicken", "price": "12,00 €", "image": "", "kind": "salad" }
+          { "name": "Margherita", "price": "10,00 €", "image": "../img/pizza-margherita.png", "kind": "plain" },
+          { "name": "Tonno", "price": "11,50 €", "image": "../img/pizza-tonno.png", "kind": "is-mix" },
+          { "name": "Sucuk", "price": "11,50 €", "image": "../img/pizza-sucuk.png", "kind": "haehnchen" },
+          { "name": "Steak", "price": "12,50 €", "image": "../img/pizza-steak.png", "kind": "steak" },
+          { "name": "Chicken", "price": "12,00 €", "image": "../img/pizza-chicken.png", "kind": "salad" }
         ]
       },
       {
