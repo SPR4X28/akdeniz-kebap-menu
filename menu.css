@@ -486,10 +486,10 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
 .g-media{
   flex:1 1 auto;min-height:0;width:100%;position:relative;
   display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 1.4rem 1.6rem rgba(40,25,10,.28)); /* Schatten bleibt beim Drehen unten */
 }
 .g-img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
-  filter:drop-shadow(0 1.4rem 1.6rem rgba(40,25,10,.28));
+  position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;
 }
 .g-media.is-empty{border:.25rem dashed rgba(154,138,112,.35);border-radius:1.8rem;color:rgba(154,138,112,.55)}
 .g-ph{width:9rem;height:9rem;max-height:70%}
@@ -623,6 +623,16 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
   @starting-style{ .card-note{opacity:0;transform:translateX(-1.4rem) scale(.9)} }
 
   .food{animation:food-float 7s ease-in-out infinite alternate}
+
+  /* Pizzen (Produkt-Raster Seite 2): drehen sich ganz langsam, jede leicht
+     versetzt und abwechselnd in die andere Richtung, damit es lebendig wirkt */
+  .g-img{animation:pizza-spin 60s linear infinite}
+  .g-item:nth-child(even) .g-img{animation-direction:reverse}
+  .g-item:nth-child(2) .g-img{animation-delay:-12s}
+  .g-item:nth-child(3) .g-img{animation-delay:-27s}
+  .g-item:nth-child(4) .g-img{animation-delay:-41s}
+  .g-item:nth-child(5) .g-img{animation-delay:-53s}
+  @keyframes pizza-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   .card:nth-child(2) .food{animation-duration:8s;animation-delay:-2s}
   .card:nth-child(3) .food{animation-duration:9s;animation-delay:-4s}
   @keyframes food-float{from{transform:translateX(-50%) translateY(-.6rem) rotate(-.3deg)}to{transform:translateX(-50%) translateY(.9rem) rotate(.4deg)}}
