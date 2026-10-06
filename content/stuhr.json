@@ -74,11 +74,14 @@
   "seite2": {
     "cards": [
       {
-        "title": "Vegetarisch",
+        "title": "Veggie Gerichte",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" }
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €" },
+          { "name": "Veggie Chicken Pita", "price": "" },
+          { "name": "Veggie Chicken Dürüm", "price": "" },
+          { "name": "Veggie Chicken Teller", "price": "" }
         ]
       },
       {
