@@ -402,7 +402,7 @@
     });
     var hasGallery = D.cards.some(function (c) { return c.gallery; });
     var grid;
-    if (hasGallery) {
+    if (hasGallery || document.body.dataset.page === "seite2") {
       grid = buildRows(nodes, D.cards);
     } else {
       grid = el("main", "grid");
