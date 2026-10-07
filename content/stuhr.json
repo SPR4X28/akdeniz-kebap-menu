@@ -14,7 +14,7 @@
         "image": "../img/doener-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "130 g", "haehnchen": "7,90 €", "steak": "10,90 €", "mix": "9,50 €" },
+          { "label": "M", "sub": "130 g", "haehnchen": "7,90 €", "steak": "11,00 €", "mix": "9,50 €" },
           { "label": "L", "sub": "180 g", "haehnchen": "9,90 €", "steak": "13,50 €", "mix": "11,90 €" },
           { "label": "XL", "sub": "230 g", "haehnchen": "11,50 €", "steak": "15,50 €", "mix": "13,50 €" }
         ]
@@ -27,9 +27,9 @@
         "image": "../img/dueruem-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "160 g", "haehnchen": "9,50 €", "steak": "12,50 €", "mix": "11,00 €" },
-          { "label": "L", "sub": "200 g", "haehnchen": "11,50 €", "steak": "14,90 €", "mix": "13,50 €" },
-          { "label": "XL", "sub": "250 g", "haehnchen": "13,00 €", "steak": "16,90 €", "mix": "14,90 €" }
+          { "label": "M", "sub": "160 g", "haehnchen": "9,90 €", "steak": "12,50 €", "mix": "11,50 €" },
+          { "label": "L", "sub": "200 g", "haehnchen": "12,90 €", "steak": "14,90 €", "mix": "13,90 €" },
+          { "label": "XL", "sub": "250 g", "haehnchen": "13,50 €", "steak": "16,90 €", "mix": "15,50 €" }
         ]
       },
       {
@@ -40,9 +40,9 @@
         "image": "../img/box-cut.png",
         "portion": "Nur Größe M · 130 g",
         "tiles": [
-          { "label": "Hähnchen", "price": "7,90 €" },
-          { "label": "Steak", "price": "10,90 €" },
-          { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true }
+          { "label": "Hähnchen", "price": "9,90 €" },
+          { "label": "Steak", "price": "12,00 €" },
+          { "label": "Fleisch-Mix", "price": "11,00 €", "mix": true }
         ]
       },
       {
@@ -53,8 +53,8 @@
         "image": "../img/teller-cut.png",
         "head": "Größe",
         "rows": [
-          { "label": "M", "sub": "200 g", "haehnchen": "13,50 €", "steak": "15,90 €", "mix": "14,90 €" },
-          { "label": "L", "sub": "250 g", "haehnchen": "15,50 €", "steak": "18,90 €", "mix": "17,50 €" }
+          { "label": "M", "sub": "210 g", "haehnchen": "13,50 €", "steak": "16,50 €", "mix": "15,00 €" },
+          { "label": "XL", "sub": "260 g", "haehnchen": "15,50 €", "steak": "19,00 €", "mix": "17,50 €" }
         ]
       }
     ],
@@ -78,11 +78,7 @@
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €", "image": "" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "image": "" },
-          { "name": "Crunchy Chicken Vegan Pita", "price": "9,50 €", "image": "" },
-          { "name": "Crunchy Chicken Vegan Dürüm", "price": "10,90 €", "image": "" },
-          { "name": "Crunchy Chicken Vegan Box", "price": "10,00 €", "image": "" },
-          { "name": "Crunchy Chicken Vegan Teller", "price": "12,90 €", "image": "" }
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "image": "" }
         ]
       },
       {
@@ -90,7 +86,7 @@
         "subtitle": "Lahmacun",
         "gallery": [
           { "name": "Ohne Beilage", "price": "4,50 €", "image": "" },
-          { "name": "Mit Salat & Sauce", "price": "7,90 €", "image": "" },
+          { "name": "Mit Salat & Sauce", "price": "8,00 €", "image": "" },
           { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "" },
           { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "" }
         ]
@@ -109,7 +105,7 @@
         "subtitle": "Für den Extra Hunger",
         "list": [
           { "name": "Pommes", "price": "3,50 €" },
-          { "name": "Reis", "price": "3,50 €" },
+          { "name": "Gewürzreis", "price": "4,00 €" },
           { "name": "Sauce (Extra)", "price": "2,00 €" },
           { "name": "Ketchup / Mayo", "price": "0,50 €" },
           { "name": "Brot", "price": "1,00 €" }
