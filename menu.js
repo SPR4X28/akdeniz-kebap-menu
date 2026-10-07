@@ -435,6 +435,7 @@
     window.AKDENIZ_MENU = DATA;
     var D = DATA[page];
     if (!D) return;
+    board.innerHTML = "";
 
     board.insertAdjacentHTML("beforeend", DECO);
     board.appendChild(buildHead());
@@ -458,6 +459,16 @@
     if (D.menu) board.appendChild(buildMenuBar(D.menu));
     if (D.info) board.appendChild(buildInfoCard(D.info));
     board.appendChild(buildFoot(D.foot));
+  }
+
+  /* CMS-Vorschau (?preview): Daten kommen live aus dem Editor statt aus der Datei */
+  if (/[?&]preview\b/.test(location.search)) {
+    window.addEventListener("message", function (e) {
+      if (e.data && e.data.type === "akdeniz-preview" && e.data.menu) {
+        try { render(e.data.menu); } catch (err) { console.error(err); }
+      }
+    });
+    return;
   }
 
   fetch(document.body.dataset.source || "content/menu.json")

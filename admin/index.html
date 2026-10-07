@@ -19,5 +19,46 @@
     });
   }
 </script>
+<script>
+  /* Vorschau: zeigt die echte Menütafel (Seite 1 + 2) mit den Daten aus dem
+     Editor, statt der Standard-Textansicht von Decap. */
+  (function () {
+    if (!window.CMS) return;
+    var h = window.h, createClass = window.createClass;
+
+    function menuPreview(location) {
+      return createClass({
+        frames: [],
+        send: function () {
+          var data = this.props.entry.get("data");
+          var menu = data && data.toJS ? data.toJS() : {};
+          this.frames.forEach(function (f) {
+            if (f && f.contentWindow) f.contentWindow.postMessage({ type: "akdeniz-preview", menu: menu }, "*");
+          });
+        },
+        componentDidUpdate: function () { this.send(); },
+        render: function () {
+          var self = this;
+          self.frames = [];
+          function frame(file, label) {
+            return h("div", { style: { marginBottom: "24px" } },
+              h("div", { style: { font: "600 13px/1.4 sans-serif", color: "#666", margin: "0 0 6px" } }, label),
+              h("iframe", {
+                src: "/" + location + "/" + file + "?preview",
+                ref: function (n) { if (n) self.frames.push(n); },
+                onLoad: function () { self.send(); },
+                style: { width: "100%", aspectRatio: "16 / 9", border: "1px solid #ddd", borderRadius: "8px", display: "block", background: "#f6ead6" }
+              }));
+          }
+          return h("div", { style: { padding: "12px" } },
+            frame("index.html", "Seite 1"),
+            frame("seite-2.html", "Seite 2"));
+        }
+      });
+    }
+    CMS.registerPreviewTemplate("findorff", menuPreview("findorff"));
+    CMS.registerPreviewTemplate("stuhr", menuPreview("stuhr"));
+  })();
+</script>
 </body>
 </html>
