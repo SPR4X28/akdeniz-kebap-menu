@@ -8,7 +8,6 @@
     "cards": [
       {
         "title": "Döner Pita",
-        "desc": "Knuspriges Pitabrot, gefüllt mit saftigem Fleisch, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/doener-title.png",
         "subtitle": "Knusprig. Saftig. Echt Akdeniz.",
         "note": "Immer eine\ngute Wahl!",
@@ -22,7 +21,6 @@
       },
       {
         "title": "Dürüm",
-        "desc": "Frisch gerolltes Yufka-Fladenbrot mit saftigem Fleisch, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/dueruem-title.png",
         "subtitle": "Gerollt. Voller Geschmack.",
         "note": "Mehr Geschmack\nzum Mitnehmen!",
@@ -36,7 +34,6 @@
       },
       {
         "title": "Box",
-        "desc": "Fleisch vom Spieß mit knusprigen Pommes oder Reis, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/box-title.png",
         "subtitle": "Praktisch. Zum Löffeln.",
         "note": "Perfekt für\nzwischendurch!",
@@ -50,7 +47,6 @@
       },
       {
         "title": "Teller",
-        "desc": "Fleisch vom Spieß mit knusprigen Pommes oder Reis, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/teller-title.png",
         "subtitle": "Angerichtet. Richtig satt.",
         "note": "Genuss auf\ndem Teller!",

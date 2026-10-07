@@ -690,3 +690,7 @@ body[data-layout="six"] .card-desc{font-size:2rem;margin-top:.8rem}
   filter:drop-shadow(0 1.6rem 1.8rem rgba(40,25,10,.3))}
 .ps-item figcaption{margin-top:1rem;font-family:var(--f-head);font-size:2.6rem;letter-spacing:.04em;
   text-transform:uppercase;color:var(--muted)}
+/* Fleisch-Mix: Icons mit Luft nach oben, damit sie im getönten Balken stehen */
+.matrix thead th.mix{padding-top:1.4rem}
+/* Stuhr (4er-Layout): "Größe" etwas kleiner als die Fleischsorten */
+body:not([data-layout="six"]) .matrix th.c-size{font-size:3.2rem}
