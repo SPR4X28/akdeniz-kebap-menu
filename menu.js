@@ -15,6 +15,15 @@
     if (txt != null) n.textContent = txt;
     return n;
   }
+  /* Fleischsorten-Icons: 🍗 vor "Hähnchen", 🥩 vor "Steak" (überall, wo die
+     Wörter im Text vorkommen – Inhalte im CMS bleiben ohne Emoji). */
+  function ico(t) {
+    if (!t) return t;
+    return String(t)
+      .replace(/(?:🍗\s*)?Hähnchen/g, "🍗 Hähnchen")
+      .replace(/(?:🥩\s*)?Steak/g, "🥩 Steak");
+  }
+
   function lines(parent, str, cls) {
     str.split("\n").forEach(function (l, i) {
       if (i) parent.appendChild(document.createElement("br"));
@@ -159,11 +168,12 @@
     c.tiles.forEach(function (t) {
       var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
       var tl = el("div", ("tile " + kind).trim());
-      tl.appendChild(el("div", "t-label", t.label));
+      tl.appendChild(el("div", "t-label", ico(t.label)));
       tl.appendChild(el("div", "t-price", t.price));
       tiles.appendChild(tl);
     });
     box.appendChild(tiles);
+    if (c.desc) box.appendChild(el("p", "card-desc", c.desc));
     return box;
   }
 
@@ -181,9 +191,15 @@
     var thead = el("thead");
     var tr = el("tr");
     tr.appendChild(el("th", "c-size", c.head));
-    tr.appendChild(el("th", "haehnchen", "Hähnchen"));
-    tr.appendChild(el("th", "steak", "Steak"));
-    var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thm);
+    function thIco(cls, icon, label) {
+      var th = el("th", cls);
+      th.appendChild(el("span", "th-ico", icon));
+      lines(th, label);
+      return th;
+    }
+    tr.appendChild(thIco("haehnchen", "🍗", "Hähnchen"));
+    tr.appendChild(thIco("steak", "🥩", "Steak"));
+    tr.appendChild(thIco("mix", "🥩🍗", "Fleisch-\nMix"));
     thead.appendChild(tr); table.appendChild(thead);
 
     var tb = el("tbody");
@@ -199,17 +215,20 @@
       tb.appendChild(row);
     });
     table.appendChild(tb);
-    card.appendChild(table);
+    var box = el("div", "card-prices card-prices--matrix");
+    box.appendChild(table);
+    if (c.desc) box.appendChild(el("p", "card-desc", c.desc));
+    card.appendChild(box);
     return card;
   }
 
-  function buildPriceList(c) {
+  function buildPriceList(c, noThumbs) {
     var list = el("div", "list");
     c.list.forEach(function (it) {
       var row = el("div", "item");
       /* optionales Mini-Bild links vom Namen. Feld fehlt: nur Name + Preis.
          Feld leer: runder Platzhalter (Bild folgt). */
-      if ("image" in it) {
+      if ("image" in it && !noThumbs) {
         var thumb = el("span", it.image ? "thumb" : "thumb is-empty");
         if (it.image) {
           var ti = el("img"); ti.src = it.image; ti.alt = ""; ti.loading = "eager";
@@ -217,7 +236,9 @@
         }
         row.appendChild(thumb);
       }
-      row.appendChild(el("span", "name", it.name));
+      var nm = el("span", "name", ico(it.name));
+      if (it.desc) nm.appendChild(el("small", "item-desc", it.desc));
+      row.appendChild(nm);
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
@@ -236,13 +257,31 @@
       return pcard;
     }
 
-    var card = el("article", "card card--list");
+    var photos = c.list.filter(function (it) { return it.image; });
+    var card = el("article", "card card--list" + (photos.length ? " has-photos" : ""));
     var head = el("div", "card-head");
     var h2 = el("h2", "card-title"); h2.textContent = c.title;
     head.appendChild(h2);
     if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    if (c.desc) head.appendChild(el("p", "card-desc", c.desc));
     card.appendChild(head);
-    card.appendChild(buildPriceList(c));
+    if (!photos.length) {
+      card.appendChild(buildPriceList(c));
+      return card;
+    }
+    /* Liste links, freigestellte Produktfotos rechts (nur die mit Bild) */
+    var body = el("div", "list-body");
+    body.appendChild(buildPriceList(c, true));
+    var stage = el("div", "photo-stage");
+    photos.forEach(function (it) {
+      var fig = el("figure", "ps-item");
+      var img = el("img"); img.src = it.image; img.alt = it.name; img.loading = "eager";
+      fig.appendChild(img);
+      fig.appendChild(el("figcaption", null, it.name));
+      stage.appendChild(fig);
+    });
+    body.appendChild(stage);
+    card.appendChild(body);
     return card;
   }
 
@@ -253,6 +292,7 @@
     var h2 = el("h2", "card-title"); h2.textContent = c.title;
     head.appendChild(h2);
     if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    if (c.desc) head.appendChild(el("p", "card-desc", c.desc));
     card.appendChild(head);
     card.appendChild(buildTilesBox(c));
     return card;
@@ -273,6 +313,7 @@
     var h2 = el("h2", "card-title"); h2.textContent = c.title;
     head.appendChild(h2);
     if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
+    if (c.desc) head.appendChild(el("p", "card-desc", c.desc));
     card.appendChild(head);
 
     var gal = el("div", "gallery");
@@ -288,7 +329,7 @@
         media.insertAdjacentHTML("beforeend", PLACEHOLDER);
       }
       item.appendChild(media);
-      item.appendChild(el("div", "g-name", it.name));
+      item.appendChild(el("div", "g-name", ico(it.name)));
       item.appendChild(el("div", "g-price", it.price));
       gal.appendChild(item);
     });
@@ -300,7 +341,11 @@
      breit wie Listen; die Reihen werden so geteilt, dass beide möglichst
      gleich viel Gewicht tragen. */
   function buildRows(nodes, cards) {
-    var w = cards.map(function (c) { return c.gallery ? 2 : 1; });
+    /* Galerie und Listen mit echten Produktfotos zählen doppelt breit */
+    var w = cards.map(function (c) {
+      var photos = c.list && c.list.some(function (it) { return it.image; });
+      return c.gallery || photos ? 2 : 1;
+    });
     var total = w.reduce(function (a, b) { return a + b; }, 0);
     var cut = 1, best = Infinity, sum = 0;
     for (var i = 0; i < w.length - 1; i++) {
@@ -379,7 +424,7 @@
 
   function buildFoot(arr) {
     var f = el("footer", "foot");
-    f.appendChild(el("span", null, arr[0]));
+    f.appendChild(el("span", null, ico(arr[0])));
     f.appendChild(el("span", "r", arr[1]));
     return f;
   }

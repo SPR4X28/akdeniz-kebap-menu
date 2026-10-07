@@ -8,6 +8,7 @@
     "cards": [
       {
         "title": "Döner Pita",
+        "desc": "Knuspriges Pitabrot, gefüllt mit saftigem Fleisch, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/doener-title.png",
         "subtitle": "Knusprig. Saftig. Echt Akdeniz.",
         "note": "Immer eine\ngute Wahl!",
@@ -21,6 +22,7 @@
       },
       {
         "title": "Dürüm",
+        "desc": "Frisch gerolltes Yufka-Fladenbrot mit saftigem Fleisch, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/dueruem-title.png",
         "subtitle": "Gerollt. Voller Geschmack.",
         "note": "Mehr Geschmack\nzum Mitnehmen!",
@@ -34,6 +36,7 @@
       },
       {
         "title": "Box",
+        "desc": "Fleisch vom Spieß mit knusprigen Pommes oder Reis, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/box-title.png",
         "subtitle": "Praktisch. Zum Löffeln.",
         "note": "Perfekt für\nzwischendurch!",
@@ -47,6 +50,7 @@
       },
       {
         "title": "Teller",
+        "desc": "Fleisch vom Spieß mit knusprigen Pommes oder Reis, frischem Salat und hausgemachter Sauce.",
         "titleImage": "../img/teller-title.png",
         "subtitle": "Angerichtet. Richtig satt.",
         "note": "Genuss auf\ndem Teller!",
@@ -77,45 +81,47 @@
         "title": "Veggie Gerichte",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
-          { "name": "Veggie Pita", "price": "6,90 €", "image": "" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "image": "" }
+          { "name": "Veggie Pita", "desc": "Frischer Salat & hausgemachte Sauce", "price": "6,90 €", "image": "" },
+          { "name": "Dürüm Vegetarisch", "desc": "Frischer Salat & hausgemachte Sauce", "price": "7,90 €", "image": "" }
         ]
       },
       {
         "title": "Türkische Pizza",
         "subtitle": "Lahmacun",
+        "desc": "Dünn ausgerollter Hefeteig mit würziger Hackfleisch-Gemüse-Mischung, knusprig im Ofen gebacken.",
         "list": [
-          { "name": "Ohne Beilage", "price": "4,50 €", "image": "" },
-          { "name": "Mit Salat & Sauce", "price": "8,00 €", "image": "" },
-          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "" },
-          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "" }
+          { "name": "Lahmacun pur", "desc": "Ohne Beilage", "price": "4,50 €", "image": "" },
+          { "name": "Lahmacun mit Salat", "desc": "Frischer Salat & Sauce", "price": "8,00 €", "image": "" },
+          { "name": "Lahmacun mit Fleisch", "desc": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "" },
+          { "name": "Lahmacun mit Fleisch-Mix", "desc": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "" }
         ]
       },
       {
         "title": "Falafel & Halloumi",
+        "desc": "Goldbraun frittierte Falafel oder knuspriger Halloumi mit frischem Salat und hausgemachter Sauce.",
         "list": [
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "image": "" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "image": "" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €", "image": "" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €", "image": "" }
+          { "name": "Pita", "desc": "Falafel oder Halloumi", "price": "7,90 €", "image": "" },
+          { "name": "Box", "desc": "Falafel oder Halloumi + Pommes", "price": "8,90 €", "image": "../img/falafel-box.png" },
+          { "name": "Dürüm", "desc": "Falafel oder Halloumi", "price": "8,90 €", "image": "../img/falafel-dueruem.png" },
+          { "name": "Teller", "desc": "Falafel oder Halloumi + Beilage & Salat", "price": "11,90 €", "image": "" }
         ]
       },
       {
         "title": "Extras & Beilagen",
         "subtitle": "Für den Extra Hunger",
         "list": [
-          { "name": "Pommes", "price": "3,50 €" },
+          { "name": "Pommes frites", "desc": "goldgelb & knusprig", "price": "3,50 €" },
           { "name": "Gewürzreis", "price": "4,00 €" },
-          { "name": "Sauce (Extra)", "price": "2,00 €" },
-          { "name": "Ketchup / Mayo", "price": "0,50 €" },
-          { "name": "Brot", "price": "1,00 €" }
+          { "name": "Extra Sauce", "price": "2,00 €" },
+          { "name": "Ketchup / Mayonnaise", "price": "0,50 €" },
+          { "name": "Frisches Brot", "price": "1,00 €" }
         ]
       },
       {
         "title": "Getränke",
         "subtitle": "Eiskalt serviert",
         "list": [
-          { "name": "Softdrink 0,33 l", "price": "3,50 €" },
+          { "name": "Softdrinks 0,33 l", "desc": "Cola, Fanta, Fritz, Field No. 7", "price": "3,50 €" },
           { "name": "Wasser 0,5 l", "price": "2,50 €" },
           { "name": "Ayran 0,25 l", "price": "2,50 €" }
         ]

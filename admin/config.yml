@@ -33,6 +33,7 @@ collections:
                   - { label: "Titel", name: "title", widget: string }
                   - { label: "Titel-Bild (optional, ersetzt Text)", name: "titleImage", widget: image, required: false }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
+                  - { label: "Beschreibung (optional, kleiner Text)", name: "desc", widget: text, required: false }
                   - { label: "Handschrift-Notiz (Zeilenumbruch mit \\n)", name: "note", widget: string, required: false }
                   - { label: "Produktfoto (optional, wenn noch keins vorliegt leer lassen)", name: "image", widget: image, required: false }
                   - { label: "Spaltentitel (z.B. Größe)", name: "head", widget: string, required: false }
@@ -65,6 +66,7 @@ collections:
                     summary: "{{name}} – {{price}}"
                     fields:
                       - { label: "Name", name: "name", widget: string }
+                      - { label: "Beschreibung (optional, unter dem Namen)", name: "desc", widget: string, required: false }
                       - { label: "Preis", name: "price", widget: string }
               - label: "Menü-Balken (Spar-Angebot)"
                 name: "menu"
@@ -94,6 +96,7 @@ collections:
                 fields:
                   - { label: "Titel", name: "title", widget: string }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
+                  - { label: "Beschreibung (optional, kleiner Text)", name: "desc", widget: text, required: false }
                   - label: "Positionen (einfache Liste)"
                     name: "list"
                     widget: list
@@ -101,6 +104,7 @@ collections:
                     summary: "{{name}} – {{price}}"
                     fields:
                       - { label: "Name", name: "name", widget: string }
+                      - { label: "Beschreibung (optional, unter dem Namen)", name: "desc", widget: string, required: false }
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Mini-Bild (optional, links vom Namen)", name: "image", widget: image, required: false }
                   - label: "Preis-Kacheln (statt Liste, z.B. Pizza)"
