@@ -104,9 +104,10 @@
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €", "image": "" },
           { "name": "Dürüm Vegetarisch", "price": "7,90 €", "image": "" },
-          { "name": "Veggie Chicken Pita", "price": "", "image": "" },
-          { "name": "Veggie Chicken Dürüm", "price": "", "image": "" },
-          { "name": "Veggie Chicken Teller", "price": "", "image": "" }
+          { "name": "Crunchy Chicken Vegan Pita", "price": "9,50 €", "image": "" },
+          { "name": "Crunchy Chicken Vegan Dürüm", "price": "10,90 €", "image": "" },
+          { "name": "Crunchy Chicken Vegan Box", "price": "10,00 €", "image": "" },
+          { "name": "Crunchy Chicken Vegan Teller", "price": "12,90 €", "image": "" }
         ]
       },
       {
