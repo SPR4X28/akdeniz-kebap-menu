@@ -396,7 +396,8 @@ body[data-layout="six"] .card:nth-child(2) .card-title-img{transform:rotate(-6de
 body[data-layout="six"] .card:nth-child(2) .card-head--image{top:1.6rem;left:5rem}
 /* Türkische Pizza: Titel-Logo ist durch die Rotation oben am Kartenrand
    abgeschnitten -> deutlich mehr Abstand nach oben */
-body[data-layout="six"] .card:nth-child(6) .card-head--image{top:3rem}
+body[data-layout="six"] .card:nth-child(6) .card-head--image{top:3.4rem;left:.4rem}
+body[data-layout="six"] .card:nth-child(6) .card-title-img{height:12rem}
 body[data-layout="six"] .card:nth-child(6) .card-note{margin-top:16rem}
 body[data-layout="six"] .card:nth-child(6) .card-media{margin-top:1rem}
 /* Rollo: Foto etwas nach rechts und nach oben */
