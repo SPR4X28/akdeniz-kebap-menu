@@ -37,7 +37,7 @@
         "titleImage": "../img/box-title.png",
         "subtitle": "Praktisch. Zum Löffeln.",
         "note": "Perfekt für\nzwischendurch!",
-        "image": "../img/box-cut.png",
+        "image": "../img/box-haehnchen.png",
         "portion": "Nur Größe M · 130 g",
         "tiles": [
           { "label": "Hähnchen", "price": "9,90 €" },

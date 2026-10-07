@@ -367,7 +367,7 @@ body[data-layout="six"] .card:nth-child(3) .note-arrow{transform:scaleX(-1) rota
 body[data-layout="six"] .card:nth-child(3) .card-head--image{top:.6rem;left:6rem}
 body[data-layout="six"] .card:nth-child(3) .card-title-img{height:19rem}
 body[data-layout="six"] .card:nth-child(3) .portion{font-size:2.9rem;text-align:center}
-body[data-layout="six"] .card:nth-child(3) .food{width:68%;height:68%;bottom:9%}
+body[data-layout="six"] .card:nth-child(3) .food{width:94%;height:94%;bottom:3%;left:4%}
 /* Döner-Box: Kacheln prägnanter (größer, fette Schrift) */
 body[data-layout="six"] .card:nth-child(3) .tiles{gap:1.6rem;margin-top:2rem}
 body[data-layout="six"] .card:nth-child(3) .tile{padding:4.4rem .8rem 4.2rem}
