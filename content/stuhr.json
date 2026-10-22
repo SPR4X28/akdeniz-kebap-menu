@@ -109,6 +109,11 @@
           { "name": "Sauce (Extra)", "price": "2,00 €" },
           { "name": "Ketchup / Mayo", "price": "0,50 €" },
           { "name": "Brot", "price": "1,00 €" }
+        ],
+        "sauces": [
+          { "name": "Knoblauch", "image": "" },
+          { "name": "Kräuter", "image": "" },
+          { "name": "Scharf", "image": "" }
         ]
       },
       {
@@ -121,6 +126,17 @@
         ]
       }
     ],
+    "lunch": {
+      "show": true,
+      "title": "Mittagskarte",
+      "time": "12–15 Uhr",
+      "note": "Jeden Monat neue Angebote",
+      "items": [
+        { "name": "Döner Pita", "desc": "Hähnchen, Salat & Sauce", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" },
+        { "name": "Dürüm", "desc": "Hähnchen, Salat & Sauce", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €" },
+        { "name": "Döner Box", "desc": "Mit Pommes", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" }
+      ]
+    },
     "info": {
       "title": "Kennzeichnung",
       "additives": [
