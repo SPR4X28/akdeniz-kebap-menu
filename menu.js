@@ -474,6 +474,8 @@
         : (c.tiles && !c.image) ? buildTilesOnlyCard(c)
         : buildMatrixCard(c);
     });
+    /* Seite 2: Farbe des Sticker-Titels pro Karte (CMS-Feld "color") */
+    if (page === "seite2") nodes.forEach(function (n, i) { n.dataset.tone = D.cards[i].color || "orange"; });
     /* Zwei Reihen bei Produkt-Raster oder mehr als 4 Karten (z.B. Stuhr Seite 2
        nur mit Listen) – im 2-Spalten-Raster würde die Seite sonst zu hoch. */
     var hasGallery = D.cards.some(function (c) { return c.gallery; });

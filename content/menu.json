@@ -145,6 +145,7 @@
     "cards": [
       {
         "title": "Vegetarisch",
+        "color": "gruen",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           {
@@ -175,6 +176,7 @@
       },
       {
         "title": "Türkische Pizza",
+        "color": "orange",
         "subtitle": "Lahmacun",
         "list": [
           {
@@ -197,6 +199,7 @@
       },
       {
         "title": "Extras & Beilagen",
+        "color": "braun",
         "subtitle": "Für den Extra Hunger",
         "list": [
           {
@@ -223,6 +226,7 @@
       },
       {
         "title": "Getränke",
+        "color": "petrol",
         "subtitle": "Eiskalt serviert",
         "list": [
           {
