@@ -17,7 +17,10 @@
           { "label": "M", "sub": "130 g", "haehnchen": "7,90 €", "steak": "10,90 €", "mix": "9,50 €" },
           { "label": "L", "sub": "180 g", "haehnchen": "9,90 €", "steak": "13,50 €", "mix": "11,90 €" },
           { "label": "XL", "sub": "230 g", "haehnchen": "11,50 €", "steak": "15,50 €", "mix": "13,50 €" }
-        ]
+        ],
+        "codesHaehnchen": "8,9,11,12,a,c,f,j",
+        "codesSteak": "a,f",
+        "codesMix": "8,9,11,12,a,c,f,j"
       },
       {
         "title": "Dürüm",
@@ -30,7 +33,10 @@
           { "label": "M", "sub": "160 g", "haehnchen": "9,50 €", "steak": "12,50 €", "mix": "11,00 €" },
           { "label": "L", "sub": "200 g", "haehnchen": "11,50 €", "steak": "14,90 €", "mix": "13,50 €" },
           { "label": "XL", "sub": "250 g", "haehnchen": "13,00 €", "steak": "16,90 €", "mix": "14,90 €" }
-        ]
+        ],
+        "codesHaehnchen": "8,9,11,12,a,c,f,j",
+        "codesSteak": "a,f",
+        "codesMix": "8,9,11,12,a,c,f,j"
       },
       {
         "title": "Box",
@@ -40,9 +46,9 @@
         "image": "../img/box-cut.png",
         "portion": "Nur Größe M · 130 g",
         "tiles": [
-          { "label": "Hähnchen", "price": "7,90 €" },
-          { "label": "Steak", "price": "10,90 €" },
-          { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true }
+          { "label": "Hähnchen", "price": "7,90 €", "codes": "8,9,11,12,a,c,f,j" },
+          { "label": "Steak", "price": "10,90 €", "codes": "f" },
+          { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true, "codes": "8,9,11,12,a,c,f,j" }
         ]
       },
       {
@@ -55,7 +61,10 @@
         "rows": [
           { "label": "M", "sub": "200 g", "haehnchen": "13,50 €", "steak": "15,90 €", "mix": "14,90 €" },
           { "label": "L", "sub": "250 g", "haehnchen": "15,50 €", "steak": "18,90 €", "mix": "17,50 €" }
-        ]
+        ],
+        "codesHaehnchen": "8,9,11,12,a,c,f,j",
+        "codesSteak": "f",
+        "codesMix": "8,9,11,12,a,c,f,j"
       },
       {
         "title": "Rollo",
@@ -67,7 +76,10 @@
         "rows": [
           { "label": "M", "sub": "180 g", "haehnchen": "12,00 €", "steak": "14,00 €", "mix": "13,00 €" },
           { "label": "L", "sub": "220 g", "haehnchen": "15,00 €", "steak": "17,00 €", "mix": "16,00 €" }
-        ]
+        ],
+        "codesHaehnchen": "8,9,11,12,a,c,f,j",
+        "codesSteak": "a,f",
+        "codesMix": "8,9,11,12,a,c,f,j"
       },
       {
         "title": "Türkische Pizza",
@@ -76,10 +88,10 @@
         "titleImage": "../img/pizza-title.png",
         "image": "../img/pizza-cut.png",
         "tiles": [
-          { "label": "Ohne Beilage", "price": "4,50 €", "kind": "plain" },
-          { "label": "Mit Salat & Sauce", "price": "7,90 €", "kind": "salad" },
-          { "label": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "kind": "steak" },
-          { "label": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "kind": "is-mix" }
+          { "label": "Ohne Beilage", "price": "4,50 €", "kind": "plain", "codes": "a" },
+          { "label": "Mit Salat & Sauce", "price": "7,90 €", "kind": "salad", "codes": "a" },
+          { "label": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "kind": "steak", "codes": "8,9,11,12,a,c,f,j" },
+          { "label": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "kind": "is-mix", "codes": "8,9,11,12,a,c,f,j" }
         ]
       }
     ],
@@ -92,7 +104,7 @@
       ]
     },
     "foot": [
-      "Alle Gerichte frisch zubereitet · Hähnchen, Steak oder Fleisch-Mix zur Wahl",
+      "Alle Gerichte frisch zubereitet · Hähnchen, Steak oder Fleisch-Mix zur Wahl · Zusatzstoffe & Allergene: Legende auf Seite 2",
       "Alle Preise in Euro, inkl. MwSt."
     ]
   },
@@ -102,28 +114,28 @@
         "title": "Vegetarisch",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
-          { "name": "Veggie Pita", "price": "6,90 €" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €" }
+          { "name": "Veggie Pita", "price": "6,90 €", "codes": "a,f" },
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "codes": "a,f" }
         ]
       },
       {
         "title": "Pizza",
         "subtitle": "32 cm · Ofenfrisch",
         "gallery": [
-          { "name": "Margherita", "price": "10,00 €", "image": "../img/pizza-margherita.png", "kind": "plain" },
-          { "name": "Tonno", "price": "11,50 €", "image": "../img/pizza-tonno.png", "kind": "is-mix" },
-          { "name": "Sucuk", "price": "11,50 €", "image": "../img/pizza-sucuk.png", "kind": "haehnchen" },
-          { "name": "Steak", "price": "12,50 €", "image": "../img/pizza-steak.png", "kind": "steak" },
-          { "name": "Chicken", "price": "12,00 €", "image": "../img/pizza-chicken.png", "kind": "salad" }
+          { "name": "Margherita", "price": "10,00 €", "image": "../img/pizza-margherita.png", "kind": "plain", "codes": "a,f" },
+          { "name": "Tonno", "price": "11,50 €", "image": "../img/pizza-tonno.png", "kind": "is-mix", "codes": "a,d,f" },
+          { "name": "Sucuk", "price": "11,50 €", "image": "../img/pizza-sucuk.png", "kind": "haehnchen", "codes": "1,4,a,f" },
+          { "name": "Steak", "price": "12,50 €", "image": "../img/pizza-steak.png", "kind": "steak", "codes": "a,f" },
+          { "name": "Chicken", "price": "12,00 €", "image": "../img/pizza-chicken.png", "kind": "salad", "codes": "8,9,11,12,a,c,f,j" }
         ]
       },
       {
         "title": "Falafel & Halloumi",
         "list": [
-          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €" },
-          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Box", "price": "8,90 €" },
-          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €" }
+          { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "codes": "a,f" },
+          { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "codes": "a,f" },
+          { "name": "Falafel o. Halloumi Box", "price": "8,90 €", "codes": "a,f" },
+          { "name": "Falafel o. Halloumi Teller", "price": "11,90 €", "codes": "a,f" }
         ]
       },
       {
@@ -133,24 +145,24 @@
           { "name": "Pommes", "price": "3,50 €" },
           { "name": "Reis", "price": "3,50 €" },
           { "name": "Sauce (Extra)", "price": "2,00 €" },
-          { "name": "Ketchup / Mayo", "price": "0,50 €" },
-          { "name": "Brot", "price": "1,00 €" }
+          { "name": "Ketchup / Mayo", "price": "0,50 €", "codes": "1,c,k" },
+          { "name": "Brot", "price": "1,00 €", "codes": "a" }
         ],
         "sauces": [
-          { "name": "Kräuter", "image": "../img/sauce-kraeuter.png" },
+          { "name": "Kräuter", "image": "../img/sauce-kraeuter.png", "codes": "c,f" },
           { "name": "Scharf", "image": "../img/sauce-scharf.png" },
-          { "name": "Avocado", "image": "../img/sauce-avocado.png" },
-          { "name": "Cocktail", "image": "../img/sauce-cocktail.png" },
-          { "name": "Tzatziki", "image": "../img/sauce-tzatziki.png" }
+          { "name": "Avocado", "image": "../img/sauce-avocado.png", "codes": "c,f" },
+          { "name": "Cocktail", "image": "../img/sauce-cocktail.png", "codes": "c,k" },
+          { "name": "Tzatziki", "image": "../img/sauce-tzatziki.png", "codes": "f" }
         ]
       },
       {
         "title": "Getränke",
         "subtitle": "Eiskalt serviert",
         "list": [
-          { "name": "Softdrink 0,33 l", "price": "3,50 €" },
+          { "name": "Softdrink 0,33 l", "price": "3,50 €", "codes": "4,6,7,11,12" },
           { "name": "Wasser 0,5 l", "price": "2,50 €" },
-          { "name": "Ayran 0,25 l", "price": "2,50 €" }
+          { "name": "Ayran 0,25 l", "price": "2,50 €", "codes": "f" }
         ]
       }
     ],
@@ -160,9 +172,9 @@
       "time": "12–15 Uhr",
       "note": "Jeden Monat neue Angebote",
       "items": [
-        { "name": "Döner Pita", "desc": "Hähnchen, Salat & Sauce", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" },
-        { "name": "Dürüm", "desc": "Hähnchen, Salat & Sauce", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €" },
-        { "name": "Döner Box", "desc": "Mit Pommes", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" }
+        { "name": "Döner Pita", "desc": "Hähnchen, Salat & Sauce", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" },
+        { "name": "Dürüm", "desc": "Hähnchen, Salat & Sauce", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €", "codes": "8,9,11,12,a,c,f,j" },
+        { "name": "Döner Box", "desc": "Mit Pommes", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" }
       ]
     },
     "info": {

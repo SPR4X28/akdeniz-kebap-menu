@@ -37,6 +37,9 @@ collections:
                   - { label: "Handschrift-Notiz (Zeilenumbruch mit \\n)", name: "note", widget: string, required: false }
                   - { label: "Produktfoto (optional, wenn noch keins vorliegt leer lassen)", name: "image", widget: image, required: false }
                   - { label: "Spaltentitel (z.B. Größe)", name: "head", widget: string, required: false }
+                  - { label: "Kennzeichnung Hähnchen (Preiszeilen)", name: "codesHaehnchen", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
+                  - { label: "Kennzeichnung Steak (Preiszeilen)", name: "codesSteak", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
+                  - { label: "Kennzeichnung Fleisch-Mix (Preiszeilen)", name: "codesMix", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
                   - label: "Preiszeilen (Döner/Dürüm/Rollo-Stil)"
                     name: "rows"
                     widget: list
@@ -114,6 +117,7 @@ collections:
                     summary: "{{name}}"
                     fields:
                       - { label: "Name (steht unter dem Bild)", name: "name", widget: string, required: false }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. c,f)", name: "codes", widget: string, required: false }
                       - { label: "Bild (leer lassen = Platzhalter)", name: "image", widget: image, required: false, hint: "Am besten ein freigestelltes Foto (PNG ohne Hintergrund)." }
                   - label: "Preis-Kacheln (statt Liste, z.B. Pizza)"
                     name: "tiles"

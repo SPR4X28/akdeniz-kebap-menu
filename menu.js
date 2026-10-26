@@ -208,9 +208,15 @@
     var thead = el("thead");
     var tr = el("tr");
     tr.appendChild(el("th", "c-size", c.head));
-    tr.appendChild(el("th", "haehnchen", "Hähnchen"));
-    tr.appendChild(el("th", "steak", "Steak"));
-    var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thm);
+    /* Kennzeichnung je Fleischsorte steht klein unter dem Spaltenkopf */
+    function thCodes(th, str) {
+      var cc = codes(str, "th-codes");
+      if (cc) th.appendChild(cc);
+      return th;
+    }
+    tr.appendChild(thCodes(el("th", "haehnchen", "Hähnchen"), c.codesHaehnchen));
+    tr.appendChild(thCodes(el("th", "steak", "Steak"), c.codesSteak));
+    var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thCodes(thm, c.codesMix));
     thead.appendChild(tr); table.appendChild(thead);
 
     var tb = el("tbody");
@@ -312,7 +318,7 @@
       var media = el("div", "sauce-media");
       fillMedia(media, s.image, s.name, "sauce-img");
       it.appendChild(media);
-      if (s.name) it.appendChild(el("div", "sauce-name", s.name));
+      if (s.name) it.appendChild(withCodes("div", "sauce-name", s.name, s.codes));
       row.appendChild(it);
     });
     return row;
@@ -363,7 +369,9 @@
       var media = el("div", "g-media");
       fillMedia(media, it.image, it.name, "g-img");
       item.appendChild(media);
-      item.appendChild(withCodes("div", "g-name", it.name, it.codes));
+      var gn = el("div", "g-name");
+      gn.appendChild(withCodes("span", null, it.name, it.codes));
+      item.appendChild(gn);
       item.appendChild(el("div", "g-price", it.price));
       gal.appendChild(item);
     });

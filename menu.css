@@ -762,4 +762,5 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
   font-size:2.4rem;vertical-align:baseline;line-height:1.2;
 }
 .tile .t-codes{display:block;margin-top:.8rem;font-size:2.2rem;vertical-align:baseline;line-height:1.2}
-.g-name .codes{font-size:.6em;margin-left:.35em}
+.g-name .codes{font-size:.6em}
+.matrix th .th-codes{display:block;margin-top:.5rem;font-size:1.9rem;vertical-align:baseline;line-height:1.1;white-space:normal;color:var(--muted)}
