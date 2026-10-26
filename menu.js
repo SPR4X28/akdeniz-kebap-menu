@@ -24,6 +24,19 @@
     if (txt != null) n.textContent = txt;
     return n;
   }
+  /* Zusatzstoff-/Allergen-Kennzeichnung eines Gerichts (z.B. "8,9,a,c,f"),
+     klein hinter dem Namen. Leer -> nichts anzeigen. */
+  function codes(str, cls) {
+    var t = String(str || "").replace(/\s+/g, "").replace(/,+/g, ",").replace(/^,|,$/g, "");
+    if (!t) return null;
+    return el("sup", ("codes " + (cls || "")).trim(), t.split(",").join(", "));
+  }
+  function withCodes(tag, cls, txt, str) {
+    var n = el(tag, cls, txt);
+    var c = codes(str);
+    if (c) { n.appendChild(document.createTextNode(" ")); n.appendChild(c); }
+    return n;
+  }
   function lines(parent, str, cls) {
     str.split("\n").forEach(function (l, i) {
       if (i) parent.appendChild(document.createElement("br"));
@@ -158,6 +171,9 @@
       main.appendChild(media);
     }
 
+    var cc = codes(c.codes, "card-codes");
+    if (cc) main.appendChild(cc);
+
     return main;
   }
 
@@ -170,6 +186,8 @@
       var tl = el("div", ("tile " + kind).trim());
       tl.appendChild(el("div", "t-label", t.label));
       tl.appendChild(el("div", "t-price", t.price));
+      var tc = codes(t.codes, "t-codes");
+      if (tc) tl.appendChild(tc);
       tiles.appendChild(tl);
     });
     box.appendChild(tiles);
@@ -222,7 +240,7 @@
         thumb.src = src(it.image); thumb.alt = ""; thumb.loading = "eager";
         row.appendChild(thumb);
       }
-      row.appendChild(el("span", "name", it.name));
+      row.appendChild(withCodes("span", "name", it.name, it.codes));
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
@@ -318,7 +336,7 @@
       row.appendChild(media);
 
       var txt = el("div", "lunch-txt");
-      txt.appendChild(el("div", "lunch-name", it.name));
+      txt.appendChild(withCodes("div", "lunch-name", it.name, it.codes));
       if (it.desc) txt.appendChild(el("div", "lunch-desc", it.desc));
       var prices = el("div", "lunch-prices");
       if (it.price && it.offerPrice) prices.appendChild(el("s", "lunch-old", it.price));
@@ -345,7 +363,7 @@
       var media = el("div", "g-media");
       fillMedia(media, it.image, it.name, "g-img");
       item.appendChild(media);
-      item.appendChild(el("div", "g-name", it.name));
+      item.appendChild(withCodes("div", "g-name", it.name, it.codes));
       item.appendChild(el("div", "g-price", it.price));
       gal.appendChild(item);
     });

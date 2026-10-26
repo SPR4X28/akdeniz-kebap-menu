@@ -32,6 +32,7 @@ collections:
                 fields:
                   - { label: "Titel", name: "title", widget: string }
                   - { label: "Titel-Bild (optional, ersetzt Text)", name: "titleImage", widget: image, required: false }
+                  - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
                   - { label: "Handschrift-Notiz (Zeilenumbruch mit \\n)", name: "note", widget: string, required: false }
                   - { label: "Produktfoto (optional, wenn noch keins vorliegt leer lassen)", name: "image", widget: image, required: false }
@@ -57,6 +58,7 @@ collections:
                       - { label: "Bezeichnung", name: "label", widget: string }
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Ist Fleisch-Mix? (alte Box-Kacheln)", name: "mix", widget: boolean, required: false, default: false }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
                       - { label: "Farbe (optional, überschreibt Fleisch-Mix)", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
                   - label: "Positionen (einfache Liste ohne Größen/Foto, z.B. Lahmacun)"
                     name: "list"
@@ -66,6 +68,7 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
               - label: "Menü-Balken (Spar-Angebot)"
                 name: "menu"
                 widget: object
@@ -102,6 +105,7 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
                       - { label: "Mini-Bild (optional, links vom Namen)", name: "image", widget: image, required: false }
                   - label: "Bilder-Reihe unter der Liste (z.B. Soßen bei Extras & Beilagen, bis zu 5)"
                     name: "sauces"
@@ -120,6 +124,7 @@ collections:
                       - { label: "Bezeichnung", name: "label", widget: string }
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Ist Fleisch-Mix? (alte Box-Kacheln)", name: "mix", widget: boolean, required: false, default: false }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
                       - { label: "Farbe", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
                   - label: "Produkt-Raster mit Bildern (statt Liste, z.B. Falafel & Halloumi, Pizzen)"
                     name: "gallery"
@@ -129,6 +134,7 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
                       - { label: "Bild (über dem Namen, freigestellt am besten)", name: "image", widget: image, required: false }
                       - { label: "Farbe (optional)", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
               - label: "Mittagskarte (Angebots-Spalte rechts, z.B. 12–15 Uhr)"
@@ -153,6 +159,7 @@ collections:
                       - { label: "Produktfoto", name: "image", widget: image, required: false, hint: "Foto hochladen oder aus der Mediathek wählen. Am besten freigestellt (PNG ohne Hintergrund). Leer lassen = Platzhalter." }
                       - { label: "Normaler Preis (wird durchgestrichen)", name: "price", widget: string, required: false, hint: "z.B. 9,50 €" }
                       - { label: "Angebotspreis", name: "offerPrice", widget: string, hint: "z.B. 7,90 €" }
+                      - { label: "Kennzeichnung (Zusatzstoffe/Allergene, z.B. 8,9,a,c,f)", name: "codes", widget: string, required: false, hint: "Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt. Wird klein hinter dem Namen angezeigt; Legende steht unten auf Seite 2." }
               - label: "Zusatzstoffe & Allergene (eigene Kachel unten auf Seite 2)"
                 name: "info"
                 widget: object
