@@ -116,11 +116,17 @@
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €", "codes": "a,f" },
-          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "codes": "a,f" },
-          { "name": "Crunchy Chicken Vegan Pita", "price": "9,50 €", "codes": "a,n" },
-          { "name": "Crunchy Chicken Vegan Dürüm", "price": "10,90 €", "codes": "a,n" },
-          { "name": "Crunchy Chicken Vegan Teller", "price": "12,90 €", "codes": "a,n" },
-          { "name": "Crunchy Chicken Vegan Box", "price": "10,00 €", "codes": "a,n" }
+          { "name": "Dürüm Vegetarisch", "price": "7,90 €", "codes": "a,f" }
+        ]
+      },
+      {
+        "title": "Crunchy Chicken Vegan",
+        "subtitle": "Vegan · Knusprig paniert",
+        "list": [
+          { "name": "Pita", "price": "9,50 €", "codes": "a,n" },
+          { "name": "Dürüm", "price": "10,90 €", "codes": "a,n" },
+          { "name": "Teller", "price": "12,90 €", "codes": "a,n" },
+          { "name": "Box", "price": "10,00 €", "codes": "a,n" }
         ]
       },
       {
