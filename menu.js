@@ -484,11 +484,11 @@
       grid = el("main", "grid");
       nodes.forEach(function (n) { grid.appendChild(n); });
     }
-    /* Mittagskarte als eigene Spalte rechts neben dem Karten-Raster */
+    /* Mittagskarte als eigene Spalte links neben dem Karten-Raster */
     if (D.lunch && D.lunch.show !== false && D.lunch.items && D.lunch.items.length) {
       var wrap = el("div", "grid-wrap");
-      wrap.appendChild(grid);
       wrap.appendChild(buildLunchCard(D.lunch));
+      wrap.appendChild(grid);
       board.appendChild(wrap);
     } else {
       board.appendChild(grid);
