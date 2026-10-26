@@ -139,7 +139,9 @@
         "sauces": [
           { "name": "Kräuter", "image": "../img/sauce-kraeuter.png" },
           { "name": "Scharf", "image": "../img/sauce-scharf.png" },
-          { "name": "Avocado", "image": "../img/sauce-avocado.png" }
+          { "name": "Avocado", "image": "../img/sauce-avocado.png" },
+          { "name": "Cocktail", "image": "../img/sauce-cocktail.png" },
+          { "name": "Tzatziki", "image": "../img/sauce-tzatziki.png" }
         ]
       },
       {

@@ -103,7 +103,7 @@ collections:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Mini-Bild (optional, links vom Namen)", name: "image", widget: image, required: false }
-                  - label: "Bilder-Reihe unter der Liste (z.B. Soßen bei Extras & Beilagen, am besten 3)"
+                  - label: "Bilder-Reihe unter der Liste (z.B. Soßen bei Extras & Beilagen, bis zu 5)"
                     name: "sauces"
                     widget: list
                     required: false
