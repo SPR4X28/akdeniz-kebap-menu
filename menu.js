@@ -448,9 +448,11 @@
         : (c.tiles && !c.image) ? buildTilesOnlyCard(c)
         : buildMatrixCard(c);
     });
+    /* Zwei Reihen bei Produkt-Raster oder mehr als 4 Karten (z.B. Stuhr Seite 2
+       nur mit Listen) – im 2-Spalten-Raster würde die Seite sonst zu hoch. */
     var hasGallery = D.cards.some(function (c) { return c.gallery; });
     var grid;
-    if (hasGallery) {
+    if (hasGallery || (page === "seite2" && D.cards.length > 4)) {
       grid = buildRows(nodes, D.cards);
     } else {
       grid = el("main", "grid");
