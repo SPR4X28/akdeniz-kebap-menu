@@ -93,6 +93,7 @@
       },
       {
         "title": "Crunchy Chicken Vegan",
+        "color": "gruen",
         "subtitle": "Vegan · Knusprig paniert",
         "list": [
           { "name": "Pita", "price": "9,50 €", "codes": "a,n" },
