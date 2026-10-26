@@ -38,7 +38,7 @@ collections:
                   - { label: "Produktfoto (optional, wenn noch keins vorliegt leer lassen)", name: "image", widget: image, required: false }
                   - { label: "Spaltentitel (z.B. Größe)", name: "head", widget: string, required: false }
                   - { label: "Kennzeichnung Hähnchen (Preiszeilen)", name: "codesHaehnchen", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
-                  - { label: "Kennzeichnung Steak (Preiszeilen)", name: "codesSteak", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
+                  - { label: "Kennzeichnung Premium Beef (Preiszeilen)", name: "codesSteak", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
                   - { label: "Kennzeichnung Fleisch-Mix (Preiszeilen)", name: "codesMix", widget: string, required: false, hint: "Steht klein unter dem Spaltenkopf. Nummern = Zusatzstoffe, Buchstaben = Allergene, mit Komma getrennt." }
                   - label: "Preiszeilen (Döner/Dürüm/Rollo-Stil)"
                     name: "rows"
@@ -49,7 +49,7 @@ collections:
                       - { label: "Größe (M/L/XL)", name: "label", widget: string }
                       - { label: "Gewicht", name: "sub", widget: string, required: false }
                       - { label: "Preis Hähnchen", name: "haehnchen", widget: string }
-                      - { label: "Preis Steak", name: "steak", widget: string }
+                      - { label: "Preis Premium Beef", name: "steak", widget: string }
                       - { label: "Preis Fleisch-Mix", name: "mix", widget: string }
                   - { label: "Portionshinweis (Box)", name: "portion", widget: string, required: false }
                   - label: "Preis-Kacheln (z.B. Box, Türkische Pizza)"

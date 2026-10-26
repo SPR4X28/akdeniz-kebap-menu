@@ -182,7 +182,7 @@
     if (c.portion) box.appendChild(el("p", "portion", c.portion));
     var tiles = el("div", "tiles");
     c.tiles.forEach(function (t) {
-      var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
+      var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : (t.label === "Steak" || t.label === "Premium Beef") ? "steak" : "");
       var tl = el("div", ("tile " + kind).trim());
       tl.appendChild(el("div", "t-label", t.label));
       tl.appendChild(el("div", "t-price", t.price));
@@ -215,7 +215,7 @@
       return th;
     }
     tr.appendChild(thCodes(el("th", "haehnchen", "Hähnchen"), c.codesHaehnchen));
-    tr.appendChild(thCodes(el("th", "steak", "Steak"), c.codesSteak));
+    var ths = el("th", "steak"); lines(ths, "Premium\nBeef"); tr.appendChild(thCodes(ths, c.codesSteak));
     var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thCodes(thm, c.codesMix));
     thead.appendChild(tr); table.appendChild(thead);
 

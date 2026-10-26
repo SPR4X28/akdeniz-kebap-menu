@@ -47,7 +47,7 @@
         "portion": "Nur Größe M · 130 g",
         "tiles": [
           { "label": "Hähnchen", "price": "7,90 €", "codes": "8,9,11,12,a,c,f,j" },
-          { "label": "Steak", "price": "10,90 €", "codes": "f" },
+          { "label": "Premium Beef", "price": "10,90 €", "codes": "f" },
           { "label": "Fleisch-Mix", "price": "9,50 €", "mix": true, "codes": "8,9,11,12,a,c,f,j" }
         ]
       },
@@ -104,7 +104,7 @@
       ]
     },
     "foot": [
-      "Alle Gerichte frisch zubereitet · Hähnchen, Steak oder Fleisch-Mix zur Wahl · Zusatzstoffe & Allergene: Legende auf Seite 2",
+      "Alle Gerichte frisch zubereitet · Hähnchen, Premium Beef oder Fleisch-Mix zur Wahl · Zusatzstoffe & Allergene: Legende auf Seite 2",
       "Alle Preise in Euro, inkl. MwSt."
     ]
   },
@@ -129,7 +129,7 @@
           { "name": "Margherita", "price": "10,00 €", "image": "../img/pizza-margherita.png", "kind": "plain", "codes": "a,f" },
           { "name": "Tonno", "price": "11,50 €", "image": "../img/pizza-tonno.png", "kind": "is-mix", "codes": "a,d,f" },
           { "name": "Sucuk", "price": "11,50 €", "image": "../img/pizza-sucuk.png", "kind": "haehnchen", "codes": "1,4,a,f" },
-          { "name": "Steak", "price": "12,50 €", "image": "../img/pizza-steak.png", "kind": "steak", "codes": "a,f" },
+          { "name": "Premium Beef", "price": "12,50 €", "image": "../img/pizza-steak.png", "kind": "steak", "codes": "a,f" },
           { "name": "Chicken", "price": "12,00 €", "image": "../img/pizza-chicken.png", "kind": "salad", "codes": "8,9,11,12,a,c,f,j" }
         ]
       },
@@ -176,9 +176,9 @@
       "time": "12–15 Uhr",
       "note": "Jeden Monat neue Angebote",
       "items": [
-        { "name": "Döner Pita", "desc": "Hähnchen, Salat & Sauce", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" },
-        { "name": "Dürüm", "desc": "Hähnchen, Salat & Sauce", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €", "codes": "8,9,11,12,a,c,f,j" },
-        { "name": "Döner Box", "desc": "Mit Pommes", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" }
+        { "name": "Döner Pita", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" },
+        { "name": "Dürüm", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €", "codes": "8,9,11,12,a,c,f,j" },
+        { "name": "Döner Box", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €", "codes": "8,9,11,12,a,c,f,j" }
       ]
     },
     "info": {
