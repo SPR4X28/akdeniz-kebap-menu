@@ -93,11 +93,11 @@
       {
         "title": "Türkische Pizza",
         "subtitle": "Lahmacun",
-        "gallery": [
-          { "name": "Ohne Beilage", "price": "4,50 €", "image": "", "codes": "a" },
-          { "name": "Mit Salat & Sauce", "price": "7,90 €", "image": "", "codes": "a" },
-          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "", "codes": "8,9,11,12,a,c,f,j" },
-          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "", "codes": "8,9,11,12,a,c,f,j" }
+        "list": [
+          { "name": "Ohne Beilage", "price": "4,50 €", "codes": "a" },
+          { "name": "Mit Salat & Sauce", "price": "7,90 €", "codes": "a" },
+          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "codes": "8,9,11,12,a,c,f,j" },
+          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "codes": "8,9,11,12,a,c,f,j" }
         ]
       },
       {
