@@ -1,6 +1,25 @@
 [build]
   publish = "."
 
+# Datenbank-Migrationen, Skripte und Doku gehören nicht auf die Website
+[[redirects]]
+  from = "/supabase/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/404"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/"
   to = "/index.html"

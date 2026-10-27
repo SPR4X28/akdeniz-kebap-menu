@@ -1,0 +1,9 @@
+# Supabase CLI (lokale Entwicklung: `supabase start`, Deploy: `supabase db push`)
+project_id = "akdeniz-kebap-menu"
+
+[db]
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed/*.sql"]
