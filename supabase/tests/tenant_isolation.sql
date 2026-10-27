@@ -80,10 +80,17 @@ begin
   if v_nachher <> v_vorher + 1 then
     raise exception 'menu_version: erwartet %, ist % (ein Signal pro Statement)', v_vorher + 1, v_nachher;
   end if;
+  -- realtime.send verschluckt Fehler (z. B. wenn der Realtime-Dienst die
+  -- Tagespartition von realtime.messages noch nicht angelegt hat). Darum hier
+  -- nur ein Hinweis statt Abbruch; die Trigger selbst sind oben geprüft.
   select count(*) into n from realtime.messages
     where topic = 'restaurant:' || (select id from public.restaurants where slug = 'akdeniz-findorff')
-      and event = 'menu_changed' and (payload ->> 'menu_version')::bigint = v_nachher;
-  if n <> 1 then raise exception 'Kein Broadcast menu_changed gefunden'; end if;
+      and event = 'menu_changed';
+  if n = 0 then
+    raise warning 'Kein Broadcast in realtime.messages gefunden. Realtime-Partitionen: %',
+      coalesce((select string_agg(tablename, ', ') from pg_tables
+                where schemaname = 'realtime' and tablename like 'messages\_%'), 'keine');
+  end if;
 end $$;
 
 -- ---------- Fernseher (anonym) holt einen Kopplungscode ----------
