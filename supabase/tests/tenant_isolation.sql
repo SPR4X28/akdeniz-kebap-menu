@@ -22,8 +22,8 @@ insert into public.restaurant_members (restaurant_id, user_id, role) values
   ((select id from public.restaurants where slug = 'akdeniz-findorff'), '00000000-0000-4000-8000-00000000000a', 'owner'),
   ('00000000-0000-4000-8000-0000000000b0', '00000000-0000-4000-8000-00000000000b', 'owner');
 
-create temp table ctx (k text primary key, v text);
-grant all on ctx to authenticated, anon;
+-- Zwischenwerte werden als Sitzungs-Einstellung (test.*) weitergereicht,
+-- das funktioniert auch im Supabase SQL Editor und über Rollenwechsel hinweg.
 
 -- ---------- als Gastronom A ----------
 set local role authenticated;
@@ -62,7 +62,7 @@ begin
   exception when insufficient_privilege then null;
   end;
 
-  insert into ctx values ('version_vorher', (select menu_version::text from public.restaurants where slug = 'akdeniz-findorff'));
+  perform set_config('test.version_vorher', (select menu_version::text from public.restaurants where slug = 'akdeniz-findorff'), true);
 
   -- Preisänderung von 3 Varianten in einem Statement
   update public.product_variants set price_cents = price_cents + 10
@@ -72,7 +72,7 @@ end $$;
 reset role;
 
 do $$
-declare v_vorher bigint := (select v::bigint from ctx where k = 'version_vorher');
+declare v_vorher bigint := current_setting('test.version_vorher')::bigint;
         v_nachher bigint;
         n int;
 begin
@@ -101,7 +101,8 @@ do $$
 declare p jsonb := public.request_display_pairing();
         n int;
 begin
-  insert into ctx values ('code', p ->> 'code'), ('secret', p ->> 'device_secret');
+  perform set_config('test.code', p ->> 'code', true);
+  perform set_config('test.secret', p ->> 'device_secret', true);
   if public.complete_display_pairing(p ->> 'device_secret') ->> 'status' <> 'pending' then
     raise exception 'Kopplung sollte noch offen sein';
   end if;
@@ -119,7 +120,7 @@ select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000
 
 do $$
 begin
-  perform public.claim_display_pairing((select v from ctx where k = 'code'),
+  perform public.claim_display_pairing(current_setting('test.code'),
     (select id from public.restaurants where slug = 'akdeniz-findorff'), 'Fremd-TV');
   raise exception 'B konnte ein Display für Findorff koppeln';
 exception when insufficient_privilege then null;
@@ -131,7 +132,7 @@ select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-8000-0000000
 do $$
 declare v_id uuid;
 begin
-  v_id := public.claim_display_pairing(lower((select v from ctx where k = 'code')),
+  v_id := public.claim_display_pairing(lower(current_setting('test.code')),
     (select id from public.restaurants where slug = 'akdeniz-findorff'), 'TV links');
   if v_id is null then raise exception 'Kopplung fehlgeschlagen'; end if;
 end $$;
@@ -141,11 +142,11 @@ set local role anon;
 select set_config('request.jwt.claims', '{"role":"anon"}', true);
 
 do $$
-declare r jsonb := public.complete_display_pairing((select v from ctx where k = 'secret'));
+declare r jsonb := public.complete_display_pairing(current_setting('test.secret'));
         menu jsonb;
 begin
   if r ->> 'status' <> 'paired' then raise exception 'Fernseher nicht gekoppelt: %', r; end if;
-  if (public.complete_display_pairing((select v from ctx where k = 'secret')) ->> 'status') <> 'expired' then
+  if (public.complete_display_pairing(current_setting('test.secret')) ->> 'status') <> 'expired' then
     raise exception 'Token darf nur einmal ausgeliefert werden';
   end if;
 
