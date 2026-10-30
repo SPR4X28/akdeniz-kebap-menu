@@ -112,6 +112,7 @@
     "cards": [
       {
         "title": "Vegetarisch",
+        "color": "gruen",
         "subtitle": "Ohne Fleisch für Unsere Vegetarischen Freunde",
         "list": [
           { "name": "Veggie Pita", "price": "6,90 €", "codes": "a,f" },
@@ -120,6 +121,7 @@
       },
       {
         "title": "Crunchy Chicken Vegan",
+        "color": "gruen",
         "subtitle": "Vegan · Knusprig paniert",
         "list": [
           { "name": "Pita", "price": "9,50 €", "codes": "a,n" },
@@ -130,6 +132,7 @@
       },
       {
         "title": "Pizza",
+        "color": "orange",
         "subtitle": "32 cm · Ofenfrisch",
         "gallery": [
           { "name": "Margherita", "price": "10,00 €", "image": "../img/pizza-margherita.png", "kind": "plain", "codes": "a,f" },
@@ -141,6 +144,7 @@
       },
       {
         "title": "Falafel & Halloumi",
+        "color": "gold",
         "list": [
           { "name": "Falafel o. Halloumi Pita", "price": "7,90 €", "codes": "a,f" },
           { "name": "Dürüm Falafel o. Halloumi", "price": "8,90 €", "codes": "a,f" },
@@ -150,6 +154,7 @@
       },
       {
         "title": "Extras & Beilagen",
+        "color": "braun",
         "subtitle": "Für den Extra Hunger",
         "list": [
           { "name": "Pommes", "price": "3,50 €" },
@@ -168,6 +173,7 @@
       },
       {
         "title": "Getränke",
+        "color": "petrol",
         "subtitle": "Eiskalt serviert",
         "list": [
           { "name": "Softdrink 0,33 l", "price": "3,50 €", "codes": "4,6,7,11,12" },

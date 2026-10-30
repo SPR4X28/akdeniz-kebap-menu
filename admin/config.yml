@@ -100,6 +100,7 @@ collections:
                 fields:
                   - { label: "Titel", name: "title", widget: string }
                   - { label: "Untertitel", name: "subtitle", widget: string, required: false }
+                  - { label: "Farbe der Überschrift", name: "color", widget: select, required: false, default: "orange", options: ["orange", "gruen", "gold", "braun", "petrol"], hint: "Farbe des Sticker-Schilds hinter dem Titel." }
                   - label: "Positionen (einfache Liste)"
                     name: "list"
                     widget: list
