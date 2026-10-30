@@ -24,6 +24,19 @@
     if (txt != null) n.textContent = txt;
     return n;
   }
+  /* Zusatzstoff-/Allergen-Kennzeichnung eines Gerichts (z.B. "8,9,a,c,f"),
+     klein hinter dem Namen. Leer -> nichts anzeigen. */
+  function codes(str, cls) {
+    var t = String(str || "").replace(/\s+/g, "").replace(/,+/g, ",").replace(/^,|,$/g, "");
+    if (!t) return null;
+    return el("sup", ("codes " + (cls || "")).trim(), t.split(",").join(", "));
+  }
+  function withCodes(tag, cls, txt, str) {
+    var n = el(tag, cls, txt);
+    var c = codes(str);
+    if (c) { n.appendChild(document.createTextNode(" ")); n.appendChild(c); }
+    return n;
+  }
   function lines(parent, str, cls) {
     str.split("\n").forEach(function (l, i) {
       if (i) parent.appendChild(document.createElement("br"));
@@ -158,6 +171,9 @@
       main.appendChild(media);
     }
 
+    var cc = codes(c.codes, "card-codes");
+    if (cc) main.appendChild(cc);
+
     return main;
   }
 
@@ -166,10 +182,12 @@
     if (c.portion) box.appendChild(el("p", "portion", c.portion));
     var tiles = el("div", "tiles");
     c.tiles.forEach(function (t) {
-      var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : t.label === "Steak" ? "steak" : "");
+      var kind = t.kind || (t.mix ? "is-mix" : t.label === "Hähnchen" ? "haehnchen" : (t.label === "Steak" || t.label === "Premium Beef") ? "steak" : "");
       var tl = el("div", ("tile " + kind).trim());
       tl.appendChild(el("div", "t-label", t.label));
       tl.appendChild(el("div", "t-price", t.price));
+      var tc = codes(t.codes, "t-codes");
+      if (tc) tl.appendChild(tc);
       tiles.appendChild(tl);
     });
     box.appendChild(tiles);
@@ -190,9 +208,15 @@
     var thead = el("thead");
     var tr = el("tr");
     tr.appendChild(el("th", "c-size", c.head));
-    tr.appendChild(el("th", "haehnchen", "Hähnchen"));
-    tr.appendChild(el("th", "steak", "Steak"));
-    var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thm);
+    /* Kennzeichnung je Fleischsorte steht klein unter dem Spaltenkopf */
+    function thCodes(th, str) {
+      var cc = codes(str, "th-codes");
+      if (cc) th.appendChild(cc);
+      return th;
+    }
+    tr.appendChild(thCodes(el("th", "haehnchen", "Hähnchen"), c.codesHaehnchen));
+    var ths = el("th", "steak"); lines(ths, "Premium\nBeef"); tr.appendChild(thCodes(ths, c.codesSteak));
+    var thm = el("th", "mix"); lines(thm, "Fleisch-\nMix"); tr.appendChild(thCodes(thm, c.codesMix));
     thead.appendChild(tr); table.appendChild(thead);
 
     var tb = el("tbody");
@@ -222,7 +246,7 @@
         thumb.src = src(it.image); thumb.alt = ""; thumb.loading = "eager";
         row.appendChild(thumb);
       }
-      row.appendChild(el("span", "name", it.name));
+      row.appendChild(withCodes("span", "name", it.name, it.codes));
       row.appendChild(el("span", "price", it.price));
       list.appendChild(row);
     });
@@ -294,7 +318,7 @@
       var media = el("div", "sauce-media");
       fillMedia(media, s.image, s.name, "sauce-img");
       it.appendChild(media);
-      if (s.name) it.appendChild(el("div", "sauce-name", s.name));
+      if (s.name) it.appendChild(withCodes("div", "sauce-name", s.name, s.codes));
       row.appendChild(it);
     });
     return row;
@@ -318,7 +342,7 @@
       row.appendChild(media);
 
       var txt = el("div", "lunch-txt");
-      txt.appendChild(el("div", "lunch-name", it.name));
+      txt.appendChild(withCodes("div", "lunch-name", it.name, it.codes));
       if (it.desc) txt.appendChild(el("div", "lunch-desc", it.desc));
       var prices = el("div", "lunch-prices");
       if (it.price && it.offerPrice) prices.appendChild(el("s", "lunch-old", it.price));
@@ -345,7 +369,9 @@
       var media = el("div", "g-media");
       fillMedia(media, it.image, it.name, "g-img");
       item.appendChild(media);
-      item.appendChild(el("div", "g-name", it.name));
+      var gn = el("div", "g-name");
+      gn.appendChild(withCodes("span", null, it.name, it.codes));
+      item.appendChild(gn);
       item.appendChild(el("div", "g-price", it.price));
       gal.appendChild(item);
     });
@@ -458,11 +484,11 @@
       grid = el("main", "grid");
       nodes.forEach(function (n) { grid.appendChild(n); });
     }
-    /* Mittagskarte als eigene Spalte rechts neben dem Karten-Raster */
+    /* Mittagskarte als eigene Spalte links neben dem Karten-Raster */
     if (D.lunch && D.lunch.show !== false && D.lunch.items && D.lunch.items.length) {
       var wrap = el("div", "grid-wrap");
-      wrap.appendChild(grid);
       wrap.appendChild(buildLunchCard(D.lunch));
+      wrap.appendChild(grid);
       board.appendChild(wrap);
     } else {
       board.appendChild(grid);

@@ -749,3 +749,18 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
   #board{animation:burn-guard 120s ease-in-out infinite alternate}
   @keyframes burn-guard{from{translate:0 0}to{translate:3px 2px}}
 }
+
+/* ---------- Kennzeichnung pro Gericht (Zusatzstoffe/Allergene, z.B. "8, 9, a, c") ---------- */
+.codes{
+  font-family:var(--f-body);font-weight:600;font-size:.55em;
+  letter-spacing:0;text-transform:none;color:var(--muted);
+  vertical-align:super;line-height:0;white-space:nowrap;
+}
+/* Seite 1: Codes des ganzen Gerichts unten links in der Karte */
+.card-codes{
+  position:absolute;left:0;bottom:-.6rem;z-index:6;
+  font-size:2.4rem;vertical-align:baseline;line-height:1.2;
+}
+.tile .t-codes{display:block;margin-top:.8rem;font-size:2.2rem;vertical-align:baseline;line-height:1.2}
+.g-name .codes{font-size:.6em}
+.matrix th .th-codes{display:block;margin-top:.5rem;font-size:1.9rem;vertical-align:baseline;line-height:1.1;white-space:normal;color:var(--muted)}
