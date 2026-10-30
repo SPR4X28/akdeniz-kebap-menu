@@ -84,11 +84,11 @@
       {
         "title": "Türkische Pizza",
         "subtitle": "Lahmacun",
-        "gallery": [
-          { "name": "Ohne Beilage", "price": "4,50 €", "image": "" },
-          { "name": "Mit Salat & Sauce", "price": "7,90 €", "image": "" },
-          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €", "image": "" },
-          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €", "image": "" }
+        "list": [
+          { "name": "Ohne Beilage", "price": "4,50 €" },
+          { "name": "Mit Salat & Sauce", "price": "7,90 €" },
+          { "name": "Mit Fleisch, Salat & Sauce", "price": "12,50 €" },
+          { "name": "Mit Fleisch-Mix, Salat & Sauce", "price": "14,00 €" }
         ]
       },
       {
@@ -109,6 +109,13 @@
           { "name": "Sauce (Extra)", "price": "2,00 €" },
           { "name": "Ketchup / Mayo", "price": "0,50 €" },
           { "name": "Brot", "price": "1,00 €" }
+        ],
+        "sauces": [
+          { "name": "Kräuter", "image": "../img/sauce-kraeuter.png" },
+          { "name": "Scharf", "image": "../img/sauce-scharf.png" },
+          { "name": "Avocado", "image": "../img/sauce-avocado.png" },
+          { "name": "Cocktail", "image": "../img/sauce-cocktail.png" },
+          { "name": "Tzatziki", "image": "../img/sauce-tzatziki.png" }
         ]
       },
       {
@@ -121,6 +128,17 @@
         ]
       }
     ],
+    "lunch": {
+      "show": true,
+      "title": "Mittagskarte",
+      "time": "12–15 Uhr",
+      "note": "Jeden Monat neue Angebote",
+      "items": [
+        { "name": "Döner Pita", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/doener-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" },
+        { "name": "Dürüm", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/dueruem-cut.png", "price": "9,50 €", "offerPrice": "7,90 €" },
+        { "name": "Döner Box", "desc": "Vegetarisch / Hähnchen / Premium Beef", "image": "../img/box-cut.png", "price": "7,90 €", "offerPrice": "6,50 €" }
+      ]
+    },
     "info": {
       "title": "Kennzeichnung",
       "additives": [

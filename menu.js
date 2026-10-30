@@ -7,6 +7,15 @@
   "use strict";
   var page = document.body.dataset.page;
   var IMG_BASE = document.body.dataset.imgBase || "img/";
+  /* Bilder, die über das CMS hochgeladen werden, stehen als "img/datei.png" in
+     den Daten. Auf den Standort-Seiten (stuhr/, findorff/) liegt img/ eine Ebene
+     höher -> solche Pfade passend zur Seite auflösen. "../img/…", "/img/…" und
+     volle URLs bleiben unverändert. */
+  var ROOT = IMG_BASE.replace(/img\/$/, "");
+  function src(p) {
+    if (!p || /^([a-z]+:|\/|\.\.?\/)/i.test(p)) return p;
+    return ROOT + p;
+  }
 
   /* ---------- kleine Helfer ---------- */
   function el(tag, cls, txt) {
@@ -95,7 +104,7 @@
 
     var brand = el("div", "brand");
     var img = el("img", "logo");
-    img.src = window.AKDENIZ_MENU.brand.logo; img.alt = "Akdeniz Kebap";
+    img.src = src(window.AKDENIZ_MENU.brand.logo); img.alt = "Akdeniz Kebap";
     brand.appendChild(img);
 
     var tag = el("div", "tagline");
@@ -125,7 +134,7 @@
     var head = el("div", c.titleImage ? "card-head card-head--image" : "card-head");
     if (c.titleImage) {
       var timg = el("img", "card-title-img");
-      timg.src = c.titleImage; timg.alt = c.title || ""; timg.loading = "eager";
+      timg.src = src(c.titleImage); timg.alt = c.title || ""; timg.loading = "eager";
       head.appendChild(timg);
     } else {
       var h2 = el("h2", "card-title"); h2.textContent = c.title;
@@ -144,7 +153,7 @@
 
     if (c.image) {
       var media = el("div", "card-media");
-      var pi = el("img", "food"); pi.src = c.image; pi.alt = c.title; pi.loading = "eager";
+      var pi = el("img", "food"); pi.src = src(c.image); pi.alt = c.title; pi.loading = "eager";
       media.appendChild(pi);
       main.appendChild(media);
     }
@@ -210,7 +219,7 @@
       /* optionales Mini-Bild links vom Namen (ohne Bild: nur Name + Preis) */
       if (it.image) {
         var thumb = el("img", "thumb");
-        thumb.src = it.image; thumb.alt = ""; thumb.loading = "eager";
+        thumb.src = src(it.image); thumb.alt = ""; thumb.loading = "eager";
         row.appendChild(thumb);
       }
       row.appendChild(el("span", "name", it.name));
@@ -228,6 +237,7 @@
       pcard.appendChild(buildCardMain(c));
       var box = el("div", "card-prices");
       box.appendChild(buildPriceList(c));
+      if (c.sauces && c.sauces.length) box.appendChild(buildSauces(c.sauces));
       pcard.appendChild(box);
       return pcard;
     }
@@ -239,6 +249,7 @@
     if (c.subtitle) head.appendChild(el("p", "card-sub", c.subtitle));
     card.appendChild(head);
     card.appendChild(buildPriceList(c));
+    if (c.sauces && c.sauces.length) card.appendChild(buildSauces(c.sauces));
     return card;
   }
 
@@ -263,6 +274,63 @@
     '<path d="M8 10v14M4 10v10a4 4 0 0 0 8 0V10M8 24v30M56 10c-5 3-6 10-6 16h6v28" fill="none" ' +
     'stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  /* Bild oder (solange keins hochgeladen ist) Platzhalter in einen Rahmen setzen */
+  function fillMedia(media, image, alt, imgCls) {
+    if (image) {
+      var img = el("img", imgCls);
+      img.src = src(image); img.alt = alt || ""; img.loading = "eager";
+      media.appendChild(img);
+    } else {
+      media.classList.add("is-empty");
+      media.insertAdjacentHTML("beforeend", PLACEHOLDER);
+    }
+  }
+
+  /* ---------- Bilder-Reihe unter einer Liste (z.B. Soßen bei Extras & Beilagen) ---------- */
+  function buildSauces(arr) {
+    var row = el("div", "sauces");
+    arr.forEach(function (s) {
+      var it = el("div", "sauce");
+      var media = el("div", "sauce-media");
+      fillMedia(media, s.image, s.name, "sauce-img");
+      it.appendChild(media);
+      if (s.name) it.appendChild(el("div", "sauce-name", s.name));
+      row.appendChild(it);
+    });
+    return row;
+  }
+
+  /* ---------- Seite 2: Mittagskarte (Angebots-Spalte rechts, über beide Reihen) ---------- */
+  function buildLunchCard(L) {
+    var card = el("aside", "card card--lunch");
+
+    var head = el("div", "lunch-head");
+    head.appendChild(el("h2", "lunch-title", L.title || "Mittagskarte"));
+    if (L.time) head.appendChild(el("div", "lunch-time", L.time));
+    if (L.note) head.appendChild(el("p", "lunch-note", L.note));
+    card.appendChild(head);
+
+    var list = el("div", "lunch-items");
+    (L.items || []).forEach(function (it) {
+      var row = el("div", "lunch-item");
+      var media = el("div", "lunch-media");
+      fillMedia(media, it.image, it.name, "lunch-img");
+      row.appendChild(media);
+
+      var txt = el("div", "lunch-txt");
+      txt.appendChild(el("div", "lunch-name", it.name));
+      if (it.desc) txt.appendChild(el("div", "lunch-desc", it.desc));
+      var prices = el("div", "lunch-prices");
+      if (it.price && it.offerPrice) prices.appendChild(el("s", "lunch-old", it.price));
+      prices.appendChild(el("span", "lunch-price", it.offerPrice || it.price));
+      txt.appendChild(prices);
+      row.appendChild(txt);
+      list.appendChild(row);
+    });
+    card.appendChild(list);
+    return card;
+  }
+
   function buildGalleryCard(c) {
     var card = el("article", "card card--gallery");
     var head = el("div", "card-head");
@@ -275,14 +343,7 @@
     c.gallery.forEach(function (it) {
       var item = el("div", ("g-item " + (it.kind || "")).trim());
       var media = el("div", "g-media");
-      if (it.image) {
-        var img = el("img", "g-img");
-        img.src = it.image; img.alt = it.name; img.loading = "eager";
-        media.appendChild(img);
-      } else {
-        media.classList.add("is-empty");
-        media.insertAdjacentHTML("beforeend", PLACEHOLDER);
-      }
+      fillMedia(media, it.image, it.name, "g-img");
       item.appendChild(media);
       item.appendChild(el("div", "g-name", it.name));
       item.appendChild(el("div", "g-price", it.price));
@@ -387,15 +448,25 @@
         : (c.tiles && !c.image) ? buildTilesOnlyCard(c)
         : buildMatrixCard(c);
     });
+    /* Zwei Reihen bei Produkt-Raster oder mehr als 4 Karten (z.B. Stuhr Seite 2
+       nur mit Listen) – im 2-Spalten-Raster würde die Seite sonst zu hoch. */
     var hasGallery = D.cards.some(function (c) { return c.gallery; });
     var grid;
-    if (hasGallery) {
+    if (hasGallery || (page === "seite2" && D.cards.length > 4)) {
       grid = buildRows(nodes, D.cards);
     } else {
       grid = el("main", "grid");
       nodes.forEach(function (n) { grid.appendChild(n); });
     }
-    board.appendChild(grid);
+    /* Mittagskarte als eigene Spalte rechts neben dem Karten-Raster */
+    if (D.lunch && D.lunch.show !== false && D.lunch.items && D.lunch.items.length) {
+      var wrap = el("div", "grid-wrap");
+      wrap.appendChild(grid);
+      wrap.appendChild(buildLunchCard(D.lunch));
+      board.appendChild(wrap);
+    } else {
+      board.appendChild(grid);
+    }
 
     if (D.menu) board.appendChild(buildMenuBar(D.menu));
     if (D.info) board.appendChild(buildInfoCard(D.info));

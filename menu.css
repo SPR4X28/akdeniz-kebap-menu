@@ -515,6 +515,104 @@ body[data-layout="six"] .list .price{font-size:2.3rem}
 .g-item.plain{background:rgba(184,134,11,.09)}
 .g-item.plain .g-price{color:var(--gold)}
 
+/* ---------- Bilder-Reihe unter einer Liste (z.B. Soßen bei Extras & Beilagen) ---------- */
+.sauces{
+  flex:1 1 auto;min-height:12rem;
+  display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:1.6rem;
+  margin-top:1.4rem;padding-top:1.6rem;border-top:.2rem solid var(--line-soft);
+}
+.sauce{display:flex;flex-direction:column;align-items:center;min-width:0;min-height:0}
+.sauce-media{
+  flex:1 1 auto;min-height:0;width:100%;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.sauce-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 1rem 1.2rem rgba(40,25,10,.25));
+}
+.sauce-media.is-empty{border:.25rem dashed rgba(154,138,112,.35);border-radius:1.6rem;color:rgba(154,138,112,.55)}
+.sauce-media .g-ph{width:6rem;height:6rem}
+.sauce-name{
+  flex:none;margin-top:.8rem;
+  font-family:var(--f-head);font-size:2.6rem;letter-spacing:.04em;line-height:1;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+/* Karte mit Soßen-Reihe: Liste etwas kompakter, damit die Bilder Platz haben */
+.grid--rows .card--list:has(.sauces) .list .item{padding:1.1rem 0}
+
+/* ---------- Seite 2: Mittagskarte – eigene Spalte rechts über beide Reihen ---------- */
+.grid-wrap{flex:1;min-height:0;display:flex;gap:2.8rem}
+.grid-wrap > .grid{flex:1 1 0;min-width:0}
+.card--lunch{
+  flex:none;width:74rem;margin:1.6rem 0;
+  border:.3rem solid var(--flame);
+  background:linear-gradient(180deg,#FFF6EA,#FCEBD3);
+}
+.lunch-head{
+  flex:none;position:relative;
+  background:linear-gradient(180deg,#EE5D28,#E44E1B);
+  color:#fff;text-align:center;
+  padding:2.6rem 2.4rem 2.4rem;
+}
+.lunch-title{
+  font-family:var(--f-display);font-weight:400;
+  font-size:6.4rem;line-height:.9;letter-spacing:.02em;text-transform:uppercase;
+  transform:rotate(-1.4deg);
+  text-shadow:.2rem .3rem 0 rgba(120,30,5,.25);
+}
+.lunch-time{
+  display:inline-block;margin-top:1.4rem;
+  background:#fff;color:var(--flame-deep);
+  border-radius:99rem;padding:.6rem 2.4rem .5rem;
+  font-family:var(--f-head);font-size:3.6rem;letter-spacing:.06em;line-height:1;
+}
+.lunch-note{
+  margin-top:1.2rem;
+  font-family:var(--f-script);font-weight:700;font-size:3.2rem;line-height:1;
+  color:rgba(255,255,255,.95);
+}
+.lunch-items{
+  flex:1 1 auto;min-height:0;
+  display:flex;flex-direction:column;
+  padding:1rem 2.6rem 1.6rem;
+}
+.lunch-item{
+  flex:1 1 0;min-height:0;
+  display:flex;align-items:center;gap:2rem;
+  padding:1.4rem 0;border-top:.2rem solid var(--line-soft);
+}
+.lunch-item:first-child{border-top:0}
+.lunch-media{
+  flex:none;align-self:stretch;width:30rem;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.lunch-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 1.4rem 1.6rem rgba(40,25,10,.3));
+}
+.lunch-media.is-empty{border:.25rem dashed rgba(154,138,112,.35);border-radius:1.8rem;color:rgba(154,138,112,.55)}
+.lunch-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column}
+.lunch-name{
+  font-family:var(--f-head);font-size:4.8rem;letter-spacing:.03em;line-height:1;
+  text-transform:uppercase;color:var(--ink);
+}
+.lunch-desc{
+  margin-top:.6rem;
+  font-family:var(--f-body);font-size:2.5rem;font-weight:500;line-height:1.2;color:var(--ink-soft);
+}
+.lunch-prices{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 1.6rem;margin-top:1rem}
+.lunch-old{
+  font-family:var(--f-price);font-weight:600;
+  font-size:3.2rem;font-variant-numeric:tabular-nums;color:var(--muted);
+  text-decoration-color:var(--flame-deep);text-decoration-thickness:.3rem;
+  white-space:nowrap;
+}
+.lunch-price{
+  font-family:var(--f-price);font-weight:var(--f-price-w);
+  font-size:5.8rem;font-variant-numeric:tabular-nums;color:var(--flame);line-height:1;
+  white-space:nowrap;
+}
+
 /* ================================================================
    "MACH'S ZUM MENÜ" – orange Balken, jetzt UNTEN
    ================================================================ */

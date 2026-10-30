@@ -103,6 +103,14 @@ collections:
                       - { label: "Name", name: "name", widget: string }
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Mini-Bild (optional, links vom Namen)", name: "image", widget: image, required: false }
+                  - label: "Bilder-Reihe unter der Liste (z.B. Soßen bei Extras & Beilagen, bis zu 5)"
+                    name: "sauces"
+                    widget: list
+                    required: false
+                    summary: "{{name}}"
+                    fields:
+                      - { label: "Name (steht unter dem Bild)", name: "name", widget: string, required: false }
+                      - { label: "Bild (leer lassen = Platzhalter)", name: "image", widget: image, required: false, hint: "Am besten ein freigestelltes Foto (PNG ohne Hintergrund)." }
                   - label: "Preis-Kacheln (statt Liste, z.B. Pizza)"
                     name: "tiles"
                     widget: list
@@ -123,6 +131,28 @@ collections:
                       - { label: "Preis", name: "price", widget: string }
                       - { label: "Bild (über dem Namen, freigestellt am besten)", name: "image", widget: image, required: false }
                       - { label: "Farbe (optional)", name: "kind", widget: select, required: false, options: ["haehnchen", "steak", "is-mix", "salad", "plain"] }
+              - label: "Mittagskarte (Angebots-Spalte rechts, z.B. 12–15 Uhr)"
+                name: "lunch"
+                widget: object
+                required: false
+                collapsed: false
+                fields:
+                  - { label: "Mittagskarte anzeigen", name: "show", widget: boolean, default: true, hint: "Ausschalten, um die Spalte vorübergehend auszublenden." }
+                  - { label: "Überschrift", name: "title", widget: string, default: "Mittagskarte" }
+                  - { label: "Uhrzeit", name: "time", widget: string, default: "12–15 Uhr" }
+                  - { label: "Hinweis unter der Uhrzeit (optional)", name: "note", widget: string, required: false }
+                  - label: "Angebote (3 Produkte)"
+                    name: "items"
+                    widget: list
+                    min: 1
+                    max: 3
+                    summary: "{{name}} – {{offerPrice}}"
+                    fields:
+                      - { label: "Produktname", name: "name", widget: string }
+                      - { label: "Kurzbeschreibung (optional)", name: "desc", widget: string, required: false }
+                      - { label: "Produktfoto", name: "image", widget: image, required: false, hint: "Foto hochladen oder aus der Mediathek wählen. Am besten freigestellt (PNG ohne Hintergrund). Leer lassen = Platzhalter." }
+                      - { label: "Normaler Preis (wird durchgestrichen)", name: "price", widget: string, required: false, hint: "z.B. 9,50 €" }
+                      - { label: "Angebotspreis", name: "offerPrice", widget: string, hint: "z.B. 7,90 €" }
               - label: "Zusatzstoffe & Allergene (eigene Kachel unten auf Seite 2)"
                 name: "info"
                 widget: object
